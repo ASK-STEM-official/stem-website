@@ -19,32 +19,44 @@ const marqueeItems = [
 export default function HeroSection() {
   return (
     <section className="relative h-screen min-h-[600px] flex flex-col items-center justify-center overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-brand-900 to-indigo-950" />
+      {/* Background gradient - inline styles to guarantee consistency between dev/prod */}
+      <div
+        className="absolute inset-0"
+        style={{ background: 'linear-gradient(to bottom right, #030712, #1e1b4b, #0c0a2a)' }}
+      />
 
       {/* Subtle animated gradient orbs */}
       <motion.div
-        className="absolute top-10 -left-20 w-[500px] h-[500px] bg-indigo-900/20 rounded-full blur-[120px]"
+        className="absolute top-10 -left-20 w-[500px] h-[500px] rounded-full"
+        style={{ backgroundColor: 'rgba(30, 27, 75, 0.3)', filter: 'blur(120px)' }}
         animate={{ x: [0, 80, 0], y: [0, 40, 0] }}
         transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
       />
       <motion.div
-        className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-violet-950/20 rounded-full blur-[140px]"
+        className="absolute bottom-0 right-0 w-[600px] h-[600px] rounded-full"
+        style={{ backgroundColor: 'rgba(20, 15, 60, 0.3)', filter: 'blur(140px)' }}
         animate={{ x: [0, -60, 0], y: [0, -50, 0] }}
         transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
       />
 
       {/* Geometric decorations with parallax */}
       <ParallaxLayer speed={0.1} className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-white/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-32 right-20 w-96 h-96 bg-indigo-900/15 rounded-full blur-3xl" />
+        <div className="absolute top-20 left-10 w-72 h-72 rounded-full" style={{ backgroundColor: 'rgba(255,255,255,0.04)', filter: 'blur(64px)' }} />
+        <div className="absolute bottom-32 right-20 w-96 h-96 rounded-full" style={{ backgroundColor: 'rgba(30,27,75,0.15)', filter: 'blur(64px)' }} />
       </ParallaxLayer>
       <ParallaxLayer speed={0.2} className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/3 w-48 h-48 bg-brand-900/10 rounded-full blur-2xl" />
+        <div className="absolute top-1/2 left-1/3 w-48 h-48 rounded-full" style={{ backgroundColor: 'rgba(30,27,75,0.1)', filter: 'blur(48px)' }} />
       </ParallaxLayer>
 
       {/* Dot pattern overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.08)_1px,transparent_0)] bg-[size:40px_40px] opacity-30" />
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0)',
+          backgroundSize: '40px 40px',
+          opacity: 0.25,
+        }}
+      />
 
       {/* Content */}
       <div className="relative z-10 text-center text-white px-6 max-w-4xl mx-auto flex-1 flex flex-col items-center justify-center">
