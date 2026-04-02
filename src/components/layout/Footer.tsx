@@ -2,13 +2,13 @@ import { ExternalLink } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer className="relative bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-white py-12">
+    <footer className="relative bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-white py-16">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-brand-100/30 dark:to-brand-900/30" />
       <div className="relative z-10 container mx-auto px-6 max-w-6xl">
-        <hr className="border-gray-200 dark:border-white/10 mb-8" />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <hr className="border-gray-200 dark:border-white/10 mb-10" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
           <div>
-            <div className="font-bold text-xl">STEM研究部</div>
+            <div className="font-bold text-lg tracking-tight">STEM研究部</div>
             <div className="text-sm text-gray-500 dark:text-white/60 mt-1">愛知総合工科高等学校</div>
             <div className="text-sm text-gray-400 dark:text-white/50 mt-2">最先端技術で、全国トップを目指す。</div>
           </div>

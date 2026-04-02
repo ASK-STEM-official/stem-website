@@ -60,7 +60,7 @@ export default function HeroSection() {
         </FadeInUp>
 
         <FadeInUp delay={0.1}>
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
+          <h1 className="text-5xl md:text-7xl font-bold leading-[1.15] tracking-tight mb-8">
             最先端技術と創造力で、
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-700 via-brand-500 to-indigo-600 dark:from-indigo-200 dark:via-white dark:to-cyan-200">
@@ -70,14 +70,14 @@ export default function HeroSection() {
         </FadeInUp>
 
         <FadeInUp delay={0.2}>
-          <p className="text-lg md:text-xl text-gray-600 dark:text-white/70 max-w-2xl mx-auto mb-10">
+          <p className="text-lg md:text-xl text-gray-600 dark:text-white/70 max-w-2xl mx-auto mb-12 leading-relaxed">
             愛知総合工科高等学校 STEM研究部。プログラミング未経験からでも始められる、全国大会を本気で目指す技術系部活です。
           </p>
         </FadeInUp>
 
         <FadeInUp delay={0.4}>
           <div className="flex gap-4 justify-center">
-            <Button variant="primary" href="#about">
+            <Button variant="primary" href="#mission">
               部活について知る
             </Button>
             <Button variant="outline" href="#projects">

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 export default function MissionSection() {
   return (
-    <section className="relative bg-brand-50 dark:bg-gray-950 text-gray-900 dark:text-white py-32 overflow-hidden">
+    <section id="mission" className="relative bg-brand-50 dark:bg-gray-950 text-gray-900 dark:text-white py-36 overflow-hidden">
       {/* Subtle indigo tint overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-brand-100/60 via-brand-50/30 to-transparent dark:from-brand-900/40 dark:via-brand-900/20 dark:to-transparent" />
 
@@ -33,10 +33,10 @@ export default function MissionSection() {
           transition={{ duration: 0.7 }}
           className="mb-20"
         >
-          <p className="text-brand-600 dark:text-brand-200 text-xs font-bold uppercase tracking-[0.3em] mb-6">
+          <p className="text-brand-600 dark:text-brand-200 text-xs font-bold uppercase tracking-[0.3em] mb-8">
             Mission
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold leading-tight">
+          <h2 className="text-3xl md:text-5xl font-bold leading-[1.3] tracking-tight">
             最先端の技術と創造力を掛け合わせ、
             <br />
             <span className="text-brand-600 dark:text-brand-200">
@@ -62,10 +62,10 @@ export default function MissionSection() {
           transition={{ duration: 0.7 }}
           className="mb-20"
         >
-          <p className="text-brand-600 dark:text-brand-200 text-xs font-bold uppercase tracking-[0.3em] mb-6">
+          <p className="text-brand-600 dark:text-brand-200 text-xs font-bold uppercase tracking-[0.3em] mb-8">
             Vision
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold leading-tight">
+          <h2 className="text-3xl md:text-5xl font-bold leading-[1.3] tracking-tight">
             全部員がAIを使いこなす技術集団となり、
             <br />
             <span className="text-brand-600 dark:text-brand-200">
@@ -75,7 +75,7 @@ export default function MissionSection() {
         </motion.div>
 
         {/* 3 pillars */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20">
           {[
             { label: 'Skill Up', desc: '技術力の向上', sub: '各班の専門技術を深め、大会・競技・自主制作を通じて実践的なスキルを身につける' },
             { label: 'Team First', desc: 'チームで作る', sub: 'GitHubを活用して成果を共有・管理。コードレビューやドキュメント整備の文化を育成する' },
@@ -89,8 +89,8 @@ export default function MissionSection() {
               transition={{ duration: 0.6, delay: i * 0.15 }}
               className="border border-gray-200 dark:border-white/10 rounded-2xl p-8 hover:border-brand-400/50 hover:bg-brand-50 dark:hover:bg-white/5 transition-all duration-300"
             >
-              <div className="text-brand-600 dark:text-brand-300 text-xs font-bold uppercase tracking-widest mb-2">{item.label}</div>
-              <div className="text-gray-900 dark:text-white text-xl font-bold mb-3">{item.desc}</div>
+              <div className="text-brand-600 dark:text-brand-300 text-xs font-mono font-bold uppercase tracking-widest mb-3">{item.label}</div>
+              <div className="text-gray-900 dark:text-white text-xl font-bold mb-3 tracking-tight">{item.desc}</div>
               <div className="text-gray-600 dark:text-white/60 text-sm leading-relaxed">{item.sub}</div>
             </motion.div>
           ))}

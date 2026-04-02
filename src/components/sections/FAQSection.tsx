@@ -35,14 +35,9 @@ const faqData: FAQItem[] = [
     answer:
       'はい、兼班は可能です。興味のある分野が複数ある場合は、複数の班に所属して幅広く活動できます。なお、ガーデニング班に所属する場合は、必ず他の班にも所属していただきます。',
   },
-  {
-    question: '大会にはどのように参加しますか？',
-    answer:
-      '参加形態は班によって異なります。ロボット班はチームで出場することが多く、Web制作班やIT班が出場する若年者ものづくり競技大会や技能五輪などは個人での出場となります。',
-  },
 ]
 
-function FAQItem({ item, index }: { item: FAQItem; index: number }) {
+function FAQItemComponent({ item, index }: { item: FAQItem; index: number }) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -94,18 +89,18 @@ function FAQItem({ item, index }: { item: FAQItem; index: number }) {
 export default function FAQSection() {
   return (
     <SectionWrapper id="faq">
-      <div className="text-center mb-12">
-        <span className="inline-block font-mono text-sm text-brand-600 dark:text-brand-400 tracking-wider mb-3">
+      <div className="mb-16">
+        <span className="inline-block font-mono text-xs text-brand-600 dark:text-brand-400 tracking-[0.3em] uppercase mb-4">
           FAQ
         </span>
-        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
+        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
           よくある質問
         </h2>
       </div>
 
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-3xl">
         {faqData.map((item, index) => (
-          <FAQItem key={index} item={item} index={index} />
+          <FAQItemComponent key={index} item={item} index={index} />
         ))}
       </div>
     </SectionWrapper>

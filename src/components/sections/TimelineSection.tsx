@@ -131,7 +131,7 @@ export default function TimelineSection() {
   const lineHeight = useTransform(scrollYProgress, [0, 0.85], ['0%', '100%'])
 
   return (
-    <section ref={ref} id="history" className="relative pt-16 pb-24 md:pb-32 overflow-hidden">
+    <section ref={ref} id="history" className="relative pt-20 pb-28 md:pb-36 overflow-hidden">
       {/* Bottom fade for seamless blending into footer */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white dark:from-gray-950 to-transparent z-[1]" />
       {/* Background grid with edge fade */}
@@ -150,8 +150,8 @@ export default function TimelineSection() {
           transition={{ duration: 0.6 }}
           className="mb-16 md:mb-20"
         >
-          <p className="text-brand-600 dark:text-brand-400 text-xs font-bold uppercase tracking-[0.3em] mb-4">History</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
+          <p className="text-brand-600 dark:text-brand-400 text-xs font-mono font-bold uppercase tracking-[0.3em] mb-4">History</p>
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white leading-tight tracking-tight">
             沿革
           </h2>
         </motion.div>
@@ -177,8 +177,8 @@ export default function TimelineSection() {
           transition={{ duration: 0.6 }}
           className="mt-20 md:mt-28"
         >
-          <p className="text-brand-600 dark:text-brand-400 text-xs font-bold uppercase tracking-[0.3em] mb-4">Tech Stack</p>
-          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-10">
+          <p className="text-brand-600 dark:text-brand-400 text-xs font-mono font-bold uppercase tracking-[0.3em] mb-4">Tech Stack</p>
+          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-12 tracking-tight">
             使用技術
           </h3>
 

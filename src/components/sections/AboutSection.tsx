@@ -17,15 +17,15 @@ const stats = [
 export default function AboutSection() {
   return (
     <SectionWrapper id="about">
-      <div className="grid md:grid-cols-2 gap-16 items-center mb-20">
+      <div className="grid md:grid-cols-2 gap-20 items-center mb-24">
         <FadeInUp>
-          <p className="text-brand-600 dark:text-brand-500 font-semibold text-sm uppercase tracking-wider mb-4">
-            部活動について
+          <p className="text-brand-600 dark:text-brand-500 font-mono text-xs uppercase tracking-[0.3em] mb-4">
+            About
           </p>
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">
             STEM研究部とは？
           </h2>
-          <p className="text-gray-600 dark:text-white/60 leading-relaxed text-lg">
+          <p className="text-gray-600 dark:text-white/60 leading-[1.8] text-base">
             愛知総合工科高等学校のSTEM研究部は、最先端の技術と創造力で全国トップを目指す技術系部活です。プログラミング未経験者も大歓迎で、AIを活用した開発からロボット競技まで幅広い活動を行っています。
           </p>
         </FadeInUp>

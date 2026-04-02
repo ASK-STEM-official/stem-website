@@ -5,8 +5,9 @@ import { cn } from '@/lib/utils'
 import ThemeToggle from '@/components/ui/ThemeToggle'
 
 const navLinks = [
+  { label: 'Mission', href: '#mission' },
   { label: '部活について', href: '#about' },
-  { label: 'プロジェクト', href: '#projects' },
+  { label: '班紹介', href: '#projects' },
   { label: '実績', href: '#awards' },
   { label: '沿革', href: '#history' },
   { label: 'FAQ', href: '#faq' },
@@ -27,23 +28,23 @@ export default function Navigation() {
       <div className="container mx-auto px-6 h-16 flex items-center justify-between max-w-6xl">
         <span
           className={cn(
-            'font-bold text-xl transition-colors',
+            'font-bold text-lg tracking-tight transition-colors',
             scrolled ? 'text-gray-900 dark:text-white' : 'text-white'
           )}
         >
           STEM研究部
         </span>
-        <div className="flex items-center gap-6">
-          <ul className="flex gap-8">
+        <div className="flex items-center gap-8">
+          <ul className="hidden md:flex gap-7">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
                   className={cn(
-                    'text-sm font-medium transition-colors hover:text-brand-300',
+                    'text-[13px] font-medium transition-colors',
                     scrolled
-                      ? 'text-gray-600 dark:text-white/80 hover:text-brand-500 dark:hover:text-brand-300'
-                      : 'text-white/90'
+                      ? 'text-gray-500 dark:text-white/70 hover:text-gray-900 dark:hover:text-white'
+                      : 'text-white/80 hover:text-white'
                   )}
                 >
                   {link.label}

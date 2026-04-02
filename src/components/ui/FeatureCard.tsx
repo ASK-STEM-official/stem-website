@@ -26,9 +26,9 @@ export default function FeatureCard({
         className
       )}
     >
-      <Icon className="w-10 h-10 text-brand-600 dark:text-brand-500 mb-5" strokeWidth={1.5} />
-      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{title}</h3>
-      <p className="text-gray-600 dark:text-white/60 leading-relaxed">{description}</p>
+      <Icon className="w-9 h-9 text-brand-600 dark:text-brand-500 mb-5" strokeWidth={1.5} />
+      <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 tracking-tight">{title}</h3>
+      <p className="text-gray-600 dark:text-white/60 text-sm leading-relaxed">{description}</p>
     </motion.div>
   )
 }
