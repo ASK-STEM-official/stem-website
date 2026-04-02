@@ -51,12 +51,12 @@ export default function MissionSection() {
         <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-white dark:from-gray-950 to-transparent z-[1]" />
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white dark:from-gray-950 to-transparent z-[1]" />
         <motion.div
-          className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-brand-200/30 dark:bg-brand-600/15 blur-[120px]"
+          className="hidden sm:block absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-brand-200/30 dark:bg-brand-600/15 blur-[120px]"
           animate={{ x: [0, 60, 0], y: [0, -40, 0] }}
           transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
-          className="absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full bg-indigo-200/30 dark:bg-indigo-500/10 blur-[100px]"
+          className="hidden sm:block absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full bg-indigo-200/30 dark:bg-indigo-500/10 blur-[100px]"
           animate={{ x: [0, -50, 0], y: [0, 50, 0] }}
           transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
         />

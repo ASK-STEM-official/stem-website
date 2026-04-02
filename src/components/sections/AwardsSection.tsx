@@ -54,8 +54,8 @@ export default function AwardsSection() {
         className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.06)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(99,102,241,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.05)_1px,transparent_1px)] bg-[size:80px_80px]"
         style={{ y: bgY, maskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)', WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)' }}
       />
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-indigo-200/20 dark:bg-indigo-600/10 rounded-full blur-[120px]" />
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-violet-200/20 dark:bg-violet-600/10 rounded-full blur-[120px]" />
+      <div className="hidden sm:block absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-indigo-200/20 dark:bg-indigo-600/10 rounded-full blur-[120px]" />
+      <div className="hidden sm:block absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-violet-200/20 dark:bg-violet-600/10 rounded-full blur-[120px]" />
 
       <div className="relative z-10 container mx-auto px-6 max-w-6xl">
         <motion.div

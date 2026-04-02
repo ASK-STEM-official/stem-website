@@ -112,6 +112,12 @@ export default function DotParticleCanvas({ className }: DotParticleCanvasProps)
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
+    // Skip expensive work when there are no particles
+    if (particles.current.length === 0) {
+      requestIdRef.current = requestAnimationFrame(animate)
+      return
+    }
+
     timeRef.current += 0.006
     const w = canvas.clientWidth
     const h = canvas.clientHeight
@@ -148,6 +154,10 @@ export default function DotParticleCanvas({ className }: DotParticleCanvasProps)
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
+
+    // Skip on touch/mobile devices — the full-page canvas is too expensive
+    if (window.matchMedia('(pointer: coarse)').matches) return
+
     const wrapper = canvas.parentElement
     const container = wrapper?.parentElement ?? wrapper
 

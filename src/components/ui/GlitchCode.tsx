@@ -32,6 +32,9 @@ export default function GlitchCode({ className }: { className?: string }) {
   const [text, setText] = useState(CODE_BLOCKS[0])
 
   useEffect(() => {
+    // Skip animation on touch devices for performance
+    if (window.matchMedia('(pointer: coarse)').matches) return
+
     let current = CODE_BLOCKS[0]
     let blockIdx = 0
     let phase: 'idle' | 'dissolve' | 'resolve' = 'idle'

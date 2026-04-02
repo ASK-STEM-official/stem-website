@@ -186,13 +186,13 @@ export default function TimelineSection() {
             WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 8%, black 92%, transparent)',
           }}
         />
-        <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-indigo-200/20 dark:bg-indigo-600/10 rounded-full blur-[120px]" />
+        <div className="hidden sm:block absolute top-1/3 left-0 w-[500px] h-[500px] bg-indigo-200/20 dark:bg-indigo-600/10 rounded-full blur-[120px]" />
       </div>
 
       {/* ── PART 1: Sticky scroll timeline ── */}
       <div ref={timelineRef} style={{ height: '350vh' }}>
         <div className="sticky top-0 h-screen flex items-center overflow-hidden" style={{ height: '100dvh' }}>
-          <div className="absolute inset-0 flex items-center justify-center overflow-hidden p-6 sm:p-10">
+          <div className="absolute inset-0 hidden sm:flex items-center justify-center overflow-hidden p-6 sm:p-10">
             <ScrollDecodeCode
               scrollProgress={decodeProgress}
               className="text-[9px] sm:text-[11px] md:text-xs leading-[1.9] text-gray-900/[0.06] dark:text-white/[0.04]"
