@@ -20,15 +20,12 @@ export default function Navigation() {
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         scrolled
           ? 'bg-white/95 dark:bg-gray-950/95 backdrop-blur-md shadow-sm border-b border-gray-200 dark:border-white/10'
-          : 'bg-transparent'
+          : 'bg-gradient-to-b from-black/30 to-transparent'
       )}
     >
       <div className="container mx-auto px-6 h-16 flex items-center justify-between max-w-6xl">
         <span
-          className={cn(
-            'font-bold text-xl transition-colors',
-            scrolled ? 'text-gray-900 dark:text-white' : 'text-white'
-          )}
+          className="font-bold text-xl text-white transition-colors"
         >
           STEM研究部
         </span>
@@ -39,9 +36,9 @@ export default function Navigation() {
                 <a
                   href={link.href}
                   className={cn(
-                    'text-sm font-medium transition-colors hover:text-brand-500',
+                    'text-sm font-medium transition-colors hover:text-brand-300',
                     scrolled
-                      ? 'text-gray-600 dark:text-white/80'
+                      ? 'text-gray-600 dark:text-white/80 hover:text-brand-500 dark:hover:text-brand-300'
                       : 'text-white/90'
                   )}
                 >

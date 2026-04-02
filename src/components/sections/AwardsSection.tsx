@@ -9,48 +9,42 @@ const awards = [
     event: '日本ゲーム大賞 U18',
     result: '金賞',
     detail: '日本最大規模のゲームコンテストU18部門で金賞を受賞。Unityで制作したオリジナルゲームが高い評価を受けた。',
-    color: 'from-amber-500 to-yellow-400',
-    accent: 'text-yellow-200',
+    emoji: '🏆',
   },
   {
     year: '2024',
     event: 'シンギュラリティBQ データクエスト',
     result: '2位 + PE-BANK賞',
     detail: '第5回 全国高等学校AIアスリート選手権大会 データクエストで準優勝。3名がデータ分析のスキルを発揮した。',
-    color: 'from-rose-600 to-orange-500',
-    accent: 'text-orange-300',
+    emoji: '🥈',
   },
   {
     year: '2023',
     event: 'シンギュラリティBQ Xクエスト',
     result: '3位 + PE-BANK賞',
     detail: '第4回 全国高等学校AIアスリート選手権大会 Xクエストで3位入賞。PE-BANK賞も同時受賞した。',
-    color: 'from-pink-600 to-rose-500',
-    accent: 'text-pink-300',
+    emoji: '🥉',
   },
   {
     year: '2024',
     event: 'ETロボコン',
     result: '全国大会 出場',
     detail: '組込みシステム技術を競う全国大会に出場。C/C++で制御アルゴリズムを実装し、自律走行ロボットを完成させた。',
-    color: 'from-violet-600 to-indigo-600',
-    accent: 'text-violet-300',
+    emoji: '🤖',
   },
   {
     year: '5年連続',
     event: '技能五輪全国大会',
     result: '5年連続 出場',
     detail: 'ウェブデザイン職種で5年連続出場。高度な技術力と継続的な訓練の成果を全国で証明し続けている。',
-    color: 'from-indigo-600 to-cyan-600',
-    accent: 'text-cyan-300',
+    emoji: '🔥',
   },
   {
     year: '2025',
     event: 'WRO Japan',
     result: '浜松予選 3位',
     detail: 'World Robot Olympiad浜松予選会ROBO MISSIONシニア部門で3位入賞。チームでロボット制御技術を競った。',
-    color: 'from-emerald-600 to-teal-500',
-    accent: 'text-emerald-300',
+    emoji: '⚙️',
   },
 ]
 
@@ -97,36 +91,27 @@ export default function AwardsSection() {
           {awards.map((award, i) => (
             <motion.div
               key={`${award.event}-${award.year}`}
-              initial={{ opacity: 0, y: 50, rotateX: 10 }}
-              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.7, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ scale: 1.02, y: -4 }}
-              className="relative group overflow-hidden rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 backdrop-blur-sm p-8 cursor-default shadow-sm dark:shadow-none"
+              transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -4 }}
+              className="relative group rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 p-8 cursor-default shadow-sm hover:shadow-md dark:shadow-none dark:hover:border-white/20 transition-all duration-300"
             >
-              {/* Gradient bar top */}
-              <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${award.color}`} />
-
-              {/* Hover glow */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${award.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
-
               <div className="relative z-10">
-                <div className="flex items-start justify-between mb-4">
-                  <span className={`text-xs font-bold uppercase tracking-widest ${award.accent}`}>
-                    {award.year}
-                  </span>
-                  <motion.span
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: i * 0.12 + 0.3 }}
-                    className={`text-sm font-bold px-3 py-1 rounded-full bg-gradient-to-r ${award.color} text-white`}
-                  >
+                <div className="flex items-start justify-between mb-5">
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl" role="img">{award.emoji}</span>
+                    <span className="text-xs font-bold uppercase tracking-widest text-gray-400 dark:text-white/40">
+                      {award.year}
+                    </span>
+                  </div>
+                  <span className="text-xs font-bold px-3 py-1.5 rounded-full bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-white/80">
                     {award.result}
-                  </motion.span>
+                  </span>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">{award.event}</h3>
-                <p className="text-gray-600 dark:text-white/60 text-sm leading-relaxed">{award.detail}</p>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{award.event}</h3>
+                <p className="text-gray-500 dark:text-white/50 text-sm leading-relaxed">{award.detail}</p>
               </div>
             </motion.div>
           ))}
