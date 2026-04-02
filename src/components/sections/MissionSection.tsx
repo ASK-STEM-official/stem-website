@@ -37,10 +37,10 @@ export default function MissionSection() {
             Mission
           </p>
           <h2 className="text-3xl md:text-5xl font-bold leading-[1.3] tracking-tight">
-            最先端の技術と創造力を掛け合わせ、
+            技術と好奇心を掛け合わせ、
             <br />
             <span className="text-brand-600 dark:text-brand-200">
-              誰も思いつかないアイデアを形にして社会へ発信する。
+              自分たちのアイデアを形にする。
             </span>
           </h2>
         </motion.div>

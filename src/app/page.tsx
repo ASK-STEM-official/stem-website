@@ -15,15 +15,14 @@ export default function Home() {
       <Navigation />
       <HeroSection />
       <main className="relative bg-white dark:bg-gray-950 transition-colors duration-300">
-        <DotParticleCanvas className="absolute inset-0 w-full h-full z-0" />
-        <div className="relative z-10">
-          <MissionSection />
-          <AboutSection />
-          <ProjectsSection />
-          <AwardsSection />
-          <TimelineSection />
-          <FAQSection />
-        </div>
+        <MissionSection />
+        <AboutSection />
+        <ProjectsSection />
+        <AwardsSection />
+        <TimelineSection />
+        <FAQSection />
+        {/* Canvas on top of content; pointer-events-none lets clicks pass through */}
+        <DotParticleCanvas className="absolute inset-0 w-full h-full z-30 pointer-events-none" />
       </main>
       <Footer />
     </>

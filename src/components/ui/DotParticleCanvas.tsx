@@ -31,12 +31,13 @@ export default function DotParticleCanvas({ className }: DotParticleCanvasProps)
   const resizeCanvas = useCallback(() => {
     const canvas = canvasRef.current
     if (!canvas) return
-    const parent = canvas.parentElement
-    if (!parent) return
-
+    const wrapper = canvas.parentElement
+    if (!wrapper) return
+    // Read the actual content height from the positioning parent (<main>)
+    const container = wrapper.parentElement ?? wrapper
     const dpr = window.devicePixelRatio || 1
-    const w = parent.clientWidth
-    const h = parent.clientHeight
+    const w = container.clientWidth
+    const h = container.scrollHeight
 
     canvas.width = w * dpr
     canvas.height = h * dpr
@@ -135,15 +136,26 @@ export default function DotParticleCanvas({ className }: DotParticleCanvasProps)
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
+    const wrapper = canvas.parentElement
+    const container = wrapper?.parentElement ?? wrapper
 
     resizeCanvas()
     window.addEventListener('resize', resizeCanvas)
     document.addEventListener('mousedown', handleClick)
+
+    // Watch <main> for content height changes (e.g. FAQ accordion expand)
+    let ro: ResizeObserver | null = null
+    if (container) {
+      ro = new ResizeObserver(() => resizeCanvas())
+      ro.observe(container)
+    }
+
     animate()
 
     return () => {
       window.removeEventListener('resize', resizeCanvas)
       document.removeEventListener('mousedown', handleClick)
+      ro?.disconnect()
       if (requestIdRef.current) cancelAnimationFrame(requestIdRef.current)
       timeRef.current = 0
       particles.current = []
