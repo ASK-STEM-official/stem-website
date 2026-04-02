@@ -17,8 +17,8 @@ export default function SectionWrapper({
   background = 'white',
 }: SectionWrapperProps) {
   const bgClasses = {
-    white: 'bg-surface-white',
-    gray: 'bg-surface-gray',
+    white: 'bg-gray-950',
+    gray: 'bg-gray-900',
   }
 
   return (

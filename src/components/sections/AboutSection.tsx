@@ -22,10 +22,10 @@ export default function AboutSection() {
           <p className="text-brand-500 font-semibold text-sm uppercase tracking-wider mb-4">
             部活動について
           </p>
-          <h2 className="text-4xl font-bold text-brand-900 mb-6">
+          <h2 className="text-4xl font-bold text-white mb-6">
             STEM研究部とは？
           </h2>
-          <p className="text-gray-600 leading-relaxed text-lg">
+          <p className="text-white/60 leading-relaxed text-lg">
             愛知総合工科高等学校のSTEM研究部は、最先端の技術と創造力で全国トップを目指す技術系部活です。プログラミング未経験者も大歓迎で、AIを活用した開発からロボット競技まで幅広い活動を行っています。
           </p>
         </FadeInUp>
@@ -35,12 +35,12 @@ export default function AboutSection() {
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className="bg-brand-50 rounded-2xl p-6 text-center"
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center"
               >
                 <div className="text-3xl font-bold text-brand-600">
                   <CountUp end={stat.end} suffix={stat.suffix} duration={2} />
                 </div>
-                <div className="text-sm text-gray-600 mt-1">{stat.label}</div>
+                <div className="text-sm text-white/50 mt-1">{stat.label}</div>
               </div>
             ))}
           </div>

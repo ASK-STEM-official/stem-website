@@ -14,12 +14,12 @@ export default function ProjectsSection() {
           <p className="text-brand-500 font-semibold text-sm uppercase tracking-[0.25em] mb-4">
             班・活動
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-brand-900 mb-4 leading-tight">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
             6つの専門班が、
             <br />
             それぞれの頂点を目指す。
           </h2>
-          <p className="text-gray-500 text-lg max-w-xl">
+          <p className="text-white/50 text-lg max-w-xl">
             各班が専門分野に特化し、全国大会出場・受賞を本気で狙う。
           </p>
         </div>

@@ -25,7 +25,7 @@ export default function Button({
     primary:
       'bg-brand-500 text-white hover:bg-brand-600 shadow-md hover:shadow-lg hover:-translate-y-0.5',
     outline:
-      'border-2 border-brand-500 text-brand-500 hover:bg-brand-50 hover:-translate-y-0.5',
+      'border-2 border-brand-500 text-brand-300 hover:bg-brand-500/20 hover:-translate-y-0.5',
   }
 
   const sizeClasses = {

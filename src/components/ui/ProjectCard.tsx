@@ -18,7 +18,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       variants={itemVariants}
       whileHover={{ scale: 1.03, y: -6 }}
       transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-      className="group bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-2xl hover:border-transparent transition-all duration-300 cursor-pointer"
+      className="group bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-brand-500/30 hover:shadow-2xl transition-all duration-300 cursor-pointer"
     >
       <div className={`h-44 bg-gradient-to-br ${gradient} relative flex items-center justify-center overflow-hidden`}>
         {/* Animated shimmer */}
@@ -42,17 +42,17 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         )}
       </div>
       <div className="p-6">
-        <h3 className="text-lg font-bold text-brand-900 mb-2 line-clamp-2">
+        <h3 className="text-lg font-bold text-white mb-2 line-clamp-2">
           {project.title}
         </h3>
-        <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">
+        <p className="text-white/60 text-sm leading-relaxed mb-4 line-clamp-3">
           {project.description}
         </p>
         <div className="flex flex-wrap">
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="bg-brand-50 text-brand-600 text-xs font-medium px-2.5 py-1 rounded-full mr-1.5 mb-1.5"
+              className="bg-brand-500/20 text-brand-300 text-xs font-medium px-2.5 py-1 rounded-full mr-1.5 mb-1.5"
             >
               {tag}
             </span>
