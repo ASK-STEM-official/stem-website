@@ -191,8 +191,7 @@ export default function TimelineSection() {
 
       {/* ── PART 1: Sticky scroll timeline ── */}
       <div ref={timelineRef} style={{ height: '350vh' }}>
-        <div className="sticky top-0 h-screen flex items-center overflow-hidden">
-          {/* Decode code background — fills viewport, resolves with scroll */}
+        <div className="sticky top-0 h-screen flex items-center overflow-hidden" style={{ height: '100dvh' }}>
           <div className="absolute inset-0 flex items-center justify-center overflow-hidden p-6 sm:p-10">
             <ScrollDecodeCode
               scrollProgress={decodeProgress}

@@ -3,8 +3,6 @@
 import { useEffect, useRef } from 'react'
 import type { MotionValue } from 'framer-motion'
 
-const GLITCH = '01アイウエオカキクケコ{}[]<>=;:!@#$%サシスセソタチツテト'
-
 // Code that gradually reveals as you scroll
 const CODE = `// ┌─────────────────────────────────┐
 // │  STEM Research Club — init      │
@@ -67,8 +65,8 @@ for (let y = 2017; ; y++) {
   await stem.compete(y)
 }`
 
-function rchar() {
-  return GLITCH[Math.floor(Math.random() * GLITCH.length)]
+function rbit() {
+  return Math.random() < 0.5 ? '0' : '1'
 }
 
 // Fisher-Yates shuffle
@@ -92,14 +90,15 @@ export default function ScrollDecodeCode({ scrollProgress, className = '' }: Pro
     const el = preRef.current
     if (!el) return
 
-    // Build a map: for each non-whitespace char, the scroll progress at which it "resolves"
+    // ALL chars except newlines get a decode threshold (including spaces)
+    // This makes the initial state a dense block of 0s and 1s
     const charIndices: number[] = []
     for (let i = 0; i < CODE.length; i++) {
-      if (CODE[i] !== '\n' && CODE[i] !== ' ') charIndices.push(i)
+      if (CODE[i] !== '\n') charIndices.push(i)
     }
     shuffle(charIndices)
 
-    const resolveAt = new Float32Array(CODE.length).fill(-1) // -1 = whitespace, always show
+    const resolveAt = new Float32Array(CODE.length).fill(-1) // -1 = newline
     charIndices.forEach((ci, order) => {
       resolveAt[ci] = order / charIndices.length
     })
@@ -110,18 +109,18 @@ export default function ScrollDecodeCode({ scrollProgress, className = '' }: Pro
     const render = () => {
       const chars: string[] = new Array(CODE.length)
       for (let i = 0; i < CODE.length; i++) {
-        if (resolveAt[i] < 0) {
-          chars[i] = CODE[i] // whitespace
+        if (CODE[i] === '\n') {
+          chars[i] = '\n'
         } else if (progress >= resolveAt[i]) {
-          chars[i] = CODE[i] // decoded
+          chars[i] = CODE[i] // decoded (space or code char)
         } else {
-          chars[i] = rchar() // still garbled
+          chars[i] = rbit() // 0 or 1
         }
       }
       el.textContent = chars.join('')
     }
 
-    // Initial render (fully garbled)
+    // Initial render (all binary)
     render()
 
     // Scroll-driven decode
@@ -130,11 +129,11 @@ export default function ScrollDecodeCode({ scrollProgress, className = '' }: Pro
       render()
     })
 
-    // Read initial value (in case user already scrolled past)
+    // Read initial value
     progress = Math.max(0, Math.min(1, scrollProgress.get()))
     render()
 
-    // Shimmer: periodically re-randomize garbled chars for life-like flicker
+    // Shimmer: re-randomize undecoded chars periodically
     const observer = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting
     })

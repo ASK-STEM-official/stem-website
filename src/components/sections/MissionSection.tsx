@@ -44,7 +44,7 @@ export default function MissionSection() {
 
   return (
     <section ref={containerRef} id="mission" className="relative" style={{ height: '200vh' }}>
-      <div className="sticky top-0 h-screen flex items-center overflow-hidden bg-brand-50 dark:bg-gray-950 text-gray-900 dark:text-white">
+      <div className="sticky top-0 h-screen flex items-center overflow-hidden bg-brand-50 dark:bg-gray-950 text-gray-900 dark:text-white" style={{ height: '100dvh' }}>
         {/* Decorations */}
         <div className="absolute inset-0 bg-gradient-to-b from-brand-100/60 via-brand-50/30 to-transparent dark:from-brand-900/40 dark:via-brand-900/20 dark:to-transparent" />
         <div className="absolute inset-0 bg-dot-pattern opacity-50" />

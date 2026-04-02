@@ -80,7 +80,7 @@ export default function StemSection() {
 
   return (
     <section ref={containerRef} className="relative bg-dot-pattern" style={{ height: '250vh' }}>
-      <div className="sticky top-0 h-screen flex items-center overflow-hidden">
+      <div className="sticky top-0 h-screen flex items-center overflow-hidden" style={{ height: '100dvh' }}>
         <div className="container mx-auto px-5 sm:px-6 max-w-6xl w-full">
           <p className="text-brand-600 dark:text-brand-400 font-mono text-xs uppercase tracking-[0.3em] mb-2 sm:mb-3">
             What is STEM?
