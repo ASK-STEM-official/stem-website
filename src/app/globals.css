@@ -4,12 +4,10 @@
 
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
 }
 
-html, body {
-  background-color: #030712;
-  color: #fff;
+html.dark {
+  color-scheme: dark;
 }
 
 @layer base {
@@ -26,14 +24,14 @@ html, body {
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-gray-900;
+    @apply bg-gray-100 dark:bg-gray-900;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-brand-500 rounded-full;
+    @apply bg-brand-400 dark:bg-brand-500 rounded-full;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-brand-600;
+    @apply bg-brand-500 dark:bg-brand-600;
   }
 }

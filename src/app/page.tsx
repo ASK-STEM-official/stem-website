@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       <Navigation />
-      <main className="bg-gray-950">
+      <main className="bg-white dark:bg-gray-950 transition-colors duration-300">
         <HeroSection />
         <AboutSection />
         <MissionSection />

@@ -59,10 +59,10 @@ const milestones = [
 
 // ── Tech stack ───────────────────────────────────────
 const CATEGORY_STYLE: Record<string, { heading: string; pill: string }> = {
-  lang:     { heading: 'text-cyan-400',    pill: 'bg-cyan-500/10 text-cyan-300 border-cyan-500/20' },
-  platform: { heading: 'text-purple-400',  pill: 'bg-purple-500/10 text-purple-300 border-purple-500/20' },
-  hardware: { heading: 'text-orange-400',  pill: 'bg-orange-500/10 text-orange-300 border-orange-500/20' },
-  infra:    { heading: 'text-emerald-400', pill: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/20' },
+  lang:     { heading: 'text-cyan-600 dark:text-cyan-400',    pill: 'bg-cyan-50 dark:bg-cyan-500/10 text-cyan-600 dark:text-cyan-300 border-cyan-200 dark:border-cyan-500/20' },
+  platform: { heading: 'text-purple-600 dark:text-purple-400',  pill: 'bg-purple-50 dark:bg-purple-500/10 text-purple-600 dark:text-purple-300 border-purple-200 dark:border-purple-500/20' },
+  hardware: { heading: 'text-orange-600 dark:text-orange-400',  pill: 'bg-orange-50 dark:bg-orange-500/10 text-orange-600 dark:text-orange-300 border-orange-200 dark:border-orange-500/20' },
+  infra:    { heading: 'text-emerald-600 dark:text-emerald-400', pill: 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border-emerald-200 dark:border-emerald-500/20' },
 }
 
 const techStack = [
@@ -93,7 +93,7 @@ function YearEntry({ data, index }: { data: (typeof milestones)[number] & { high
             className="w-4 h-4 rounded-full bg-gradient-to-br from-brand-500 to-indigo-400 shadow-[0_0_16px_4px_rgba(99,102,241,0.4)]"
           />
         ) : (
-          <div className="w-3 h-3 rounded-full border-2 border-brand-500/60 bg-gray-950" />
+          <div className="w-3 h-3 rounded-full border-2 border-brand-500/60 bg-white dark:bg-gray-950" />
         )}
       </div>
 
@@ -101,7 +101,7 @@ function YearEntry({ data, index }: { data: (typeof milestones)[number] & { high
       <div className="flex-1 min-w-0 pb-8 sm:pb-10">
         <span
           className={`text-lg sm:text-xl font-bold tabular-nums ${
-            data.highlight ? 'text-brand-400' : 'text-white/70'
+            data.highlight ? 'text-brand-600 dark:text-brand-400' : 'text-gray-500 dark:text-white/70'
           }`}
         >
           {data.year}
@@ -110,7 +110,7 @@ function YearEntry({ data, index }: { data: (typeof milestones)[number] & { high
           {data.items.map((item, j) => (
             <li
               key={j}
-              className={`text-sm leading-relaxed ${data.highlight ? 'text-white/80' : 'text-white/60'}`}
+              className={`text-sm leading-relaxed ${data.highlight ? 'text-gray-700 dark:text-white/80' : 'text-gray-500 dark:text-white/60'}`}
             >
               {item}
             </li>
@@ -133,13 +133,13 @@ export default function TimelineSection() {
   return (
     <section ref={ref} id="history" className="relative pt-16 pb-24 md:pb-32 overflow-hidden">
       {/* Bottom fade for seamless blending into footer */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-gray-950 to-transparent z-[1]" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white dark:from-gray-950 to-transparent z-[1]" />
       {/* Background grid with edge fade */}
       <div
-        className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.05)_1px,transparent_1px)] bg-[size:80px_80px]"
+        className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.06)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(99,102,241,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.05)_1px,transparent_1px)] bg-[size:80px_80px]"
         style={{ maskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)', WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)' }}
       />
-      <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[120px]" />
+      <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-indigo-200/20 dark:bg-indigo-600/10 rounded-full blur-[120px]" />
 
       <div className="relative z-10 container mx-auto px-6 max-w-4xl">
         {/* Header */}
@@ -150,15 +150,15 @@ export default function TimelineSection() {
           transition={{ duration: 0.6 }}
           className="mb-16 md:mb-20"
         >
-          <p className="text-brand-400 text-xs font-bold uppercase tracking-[0.3em] mb-4">History</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+          <p className="text-brand-600 dark:text-brand-400 text-xs font-bold uppercase tracking-[0.3em] mb-4">History</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
             沿革
           </h2>
         </motion.div>
 
         {/* Timeline */}
         <div className="relative">
-          <div className="absolute left-[7px] top-[7px] bottom-[7px] w-[2px] bg-white/10 rounded-full" />
+          <div className="absolute left-[7px] top-[7px] bottom-[7px] w-[2px] bg-gray-200 dark:bg-white/10 rounded-full" />
           <motion.div
             className="absolute left-[7px] top-[7px] w-[2px] rounded-full bg-gradient-to-b from-brand-400 via-brand-500 to-brand-600 origin-top"
             style={{ height: lineHeight }}
@@ -177,8 +177,8 @@ export default function TimelineSection() {
           transition={{ duration: 0.6 }}
           className="mt-20 md:mt-28"
         >
-          <p className="text-brand-400 text-xs font-bold uppercase tracking-[0.3em] mb-4">Tech Stack</p>
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-10">
+          <p className="text-brand-600 dark:text-brand-400 text-xs font-bold uppercase tracking-[0.3em] mb-4">Tech Stack</p>
+          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-10">
             使用技術
           </h3>
 

@@ -19,7 +19,7 @@ export default function SectionWrapper({
   return (
     <section id={id} className={cn('relative', className)}>
       {background === 'subtle' && (
-        <div className="absolute inset-0 bg-white/[0.02]" />
+        <div className="absolute inset-0 bg-gray-50/50 dark:bg-white/[0.02]" />
       )}
       <motion.div
         initial={{ opacity: 0, y: 30 }}

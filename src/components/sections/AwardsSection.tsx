@@ -60,18 +60,18 @@ export default function AwardsSection() {
   const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '20%'])
 
   return (
-    <section ref={ref} id="awards" className="relative text-white pt-32 pb-16 overflow-hidden">
+    <section ref={ref} id="awards" className="relative text-gray-900 dark:text-white pt-32 pb-16 overflow-hidden">
       {/* Top fade for seamless blending */}
-      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-gray-950 to-transparent z-[1]" />
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-white dark:from-gray-950 to-transparent z-[1]" />
       {/* Parallax background grid with edge fade */}
       <motion.div
-        className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.05)_1px,transparent_1px)] bg-[size:80px_80px]"
+        className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.06)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(99,102,241,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.05)_1px,transparent_1px)] bg-[size:80px_80px]"
         style={{ y: bgY, maskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)', WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)' }}
       />
 
       {/* Glow spots - softer for seamless blending */}
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[120px]" />
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-violet-600/10 rounded-full blur-[120px]" />
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-indigo-200/20 dark:bg-indigo-600/10 rounded-full blur-[120px]" />
+      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-violet-200/20 dark:bg-violet-600/10 rounded-full blur-[120px]" />
 
       <div className="relative z-10 container mx-auto px-6 max-w-6xl">
         {/* Header */}
@@ -82,11 +82,11 @@ export default function AwardsSection() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <p className="text-indigo-400 text-xs font-bold uppercase tracking-[0.3em] mb-4">Awards & Records</p>
+          <p className="text-brand-600 dark:text-indigo-400 text-xs font-bold uppercase tracking-[0.3em] mb-4">Awards & Records</p>
           <h2 className="text-4xl md:text-6xl font-bold">
             全国で証明する、
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-indigo-500 dark:from-indigo-400 dark:to-cyan-400">
               圧倒的な技術力。
             </span>
           </h2>
@@ -102,7 +102,7 @@ export default function AwardsSection() {
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.7, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ scale: 1.02, y: -4 }}
-              className="relative group overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-8 cursor-default"
+              className="relative group overflow-hidden rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 backdrop-blur-sm p-8 cursor-default shadow-sm dark:shadow-none"
             >
               {/* Gradient bar top */}
               <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${award.color}`} />
@@ -125,8 +125,8 @@ export default function AwardsSection() {
                     {award.result}
                   </motion.span>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-3">{award.event}</h3>
-                <p className="text-white/60 text-sm leading-relaxed">{award.detail}</p>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">{award.event}</h3>
+                <p className="text-gray-600 dark:text-white/60 text-sm leading-relaxed">{award.detail}</p>
               </div>
             </motion.div>
           ))}
@@ -140,7 +140,7 @@ export default function AwardsSection() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-16 text-center"
         >
-          <p className="text-white/40 text-sm tracking-wider">
+          <p className="text-gray-400 dark:text-white/40 text-sm tracking-wider">
             — 挑戦は続く。次の全国制覇へ。 —
           </p>
         </motion.div>

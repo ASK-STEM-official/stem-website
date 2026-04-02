@@ -18,7 +18,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       variants={itemVariants}
       whileHover={{ scale: 1.03, y: -6 }}
       transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-      className="group bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-brand-500/30 hover:shadow-2xl transition-all duration-300 cursor-pointer"
+      className="group bg-white dark:bg-white/5 rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 hover:border-brand-500/30 hover:shadow-2xl transition-all duration-300 cursor-pointer"
     >
       <div className={`h-44 bg-gradient-to-br ${gradient} relative flex items-center justify-center overflow-hidden`}>
         {/* Animated shimmer */}
@@ -36,23 +36,23 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             className="object-cover"
           />
         ) : (
-          <span className="relative z-10 text-4xl font-black text-white/30 select-none tracking-tighter">
+          <span className="relative z-10 text-4xl font-black text-white/30 dark:text-white/30 select-none tracking-tighter">
             {project.title.replace('班', '')}
           </span>
         )}
       </div>
       <div className="p-6">
-        <h3 className="text-lg font-bold text-white mb-2 line-clamp-2">
+        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-2">
           {project.title}
         </h3>
-        <p className="text-white/60 text-sm leading-relaxed mb-4 line-clamp-3">
+        <p className="text-gray-600 dark:text-white/60 text-sm leading-relaxed mb-4 line-clamp-3">
           {project.description}
         </p>
         <div className="flex flex-wrap">
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="bg-brand-500/20 text-brand-300 text-xs font-medium px-2.5 py-1 rounded-full mr-1.5 mb-1.5"
+              className="bg-brand-100 dark:bg-brand-500/20 text-brand-600 dark:text-brand-300 text-xs font-medium px-2.5 py-1 rounded-full mr-1.5 mb-1.5"
             >
               {tag}
             </span>

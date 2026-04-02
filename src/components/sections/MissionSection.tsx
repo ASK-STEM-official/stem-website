@@ -4,22 +4,22 @@ import { motion } from 'framer-motion'
 
 export default function MissionSection() {
   return (
-    <section className="relative bg-gray-950 text-white py-32 overflow-hidden">
+    <section className="relative bg-brand-50 dark:bg-gray-950 text-gray-900 dark:text-white py-32 overflow-hidden">
       {/* Subtle indigo tint overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-brand-900/40 via-brand-900/20 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-brand-100/60 via-brand-50/30 to-transparent dark:from-brand-900/40 dark:via-brand-900/20 dark:to-transparent" />
 
       {/* Top/bottom fades for seamless blending */}
-      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-gray-950 to-transparent z-[1]" />
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-gray-950 to-transparent z-[1]" />
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-white dark:from-gray-950 to-transparent z-[1]" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white dark:from-gray-950 to-transparent z-[1]" />
 
       {/* animated gradient blobs */}
       <motion.div
-        className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-brand-600/15 blur-[120px]"
+        className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-brand-200/30 dark:bg-brand-600/15 blur-[120px]"
         animate={{ x: [0, 60, 0], y: [0, -40, 0] }}
         transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
       />
       <motion.div
-        className="absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full bg-indigo-500/10 blur-[100px]"
+        className="absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full bg-indigo-200/30 dark:bg-indigo-500/10 blur-[100px]"
         animate={{ x: [0, -50, 0], y: [0, 50, 0] }}
         transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
       />
@@ -33,13 +33,13 @@ export default function MissionSection() {
           transition={{ duration: 0.7 }}
           className="mb-20"
         >
-          <p className="text-brand-200 text-xs font-bold uppercase tracking-[0.3em] mb-6">
+          <p className="text-brand-600 dark:text-brand-200 text-xs font-bold uppercase tracking-[0.3em] mb-6">
             Mission
           </p>
           <h2 className="text-3xl md:text-5xl font-bold leading-tight">
             最先端の技術と創造力を掛け合わせ、
             <br />
-            <span className="text-brand-200">
+            <span className="text-brand-600 dark:text-brand-200">
               誰も思いつかないアイデアを形にして社会へ発信する。
             </span>
           </h2>
@@ -51,7 +51,7 @@ export default function MissionSection() {
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, ease: 'easeOut' }}
-          className="h-px bg-white/20 origin-left mb-20"
+          className="h-px bg-gray-200 dark:bg-white/20 origin-left mb-20"
         />
 
         {/* VISION */}
@@ -62,13 +62,13 @@ export default function MissionSection() {
           transition={{ duration: 0.7 }}
           className="mb-20"
         >
-          <p className="text-brand-200 text-xs font-bold uppercase tracking-[0.3em] mb-6">
+          <p className="text-brand-600 dark:text-brand-200 text-xs font-bold uppercase tracking-[0.3em] mb-6">
             Vision
           </p>
           <h2 className="text-3xl md:text-5xl font-bold leading-tight">
             全部員がAIを使いこなす技術集団となり、
             <br />
-            <span className="text-brand-200">
+            <span className="text-brand-600 dark:text-brand-200">
               競技会で全国トップレベルの実績を勝ち取る。
             </span>
           </h2>
@@ -87,11 +87,11 @@ export default function MissionSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.15 }}
-              className="border border-white/10 rounded-2xl p-8 hover:border-brand-400/50 hover:bg-white/5 transition-all duration-300"
+              className="border border-gray-200 dark:border-white/10 rounded-2xl p-8 hover:border-brand-400/50 hover:bg-brand-50 dark:hover:bg-white/5 transition-all duration-300"
             >
-              <div className="text-brand-300 text-xs font-bold uppercase tracking-widest mb-2">{item.label}</div>
-              <div className="text-white text-xl font-bold mb-3">{item.desc}</div>
-              <div className="text-white/60 text-sm leading-relaxed">{item.sub}</div>
+              <div className="text-brand-600 dark:text-brand-300 text-xs font-bold uppercase tracking-widest mb-2">{item.label}</div>
+              <div className="text-gray-900 dark:text-white text-xl font-bold mb-3">{item.desc}</div>
+              <div className="text-gray-600 dark:text-white/60 text-sm leading-relaxed">{item.sub}</div>
             </motion.div>
           ))}
         </div>
