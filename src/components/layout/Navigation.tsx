@@ -25,7 +25,10 @@ export default function Navigation() {
     >
       <div className="container mx-auto px-6 h-16 flex items-center justify-between max-w-6xl">
         <span
-          className="font-bold text-xl text-white transition-colors"
+          className={cn(
+            'font-bold text-xl transition-colors',
+            scrolled ? 'text-gray-900 dark:text-white' : 'text-white'
+          )}
         >
           STEM研究部
         </span>
