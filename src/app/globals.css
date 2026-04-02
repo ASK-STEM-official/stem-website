@@ -4,6 +4,12 @@
 
 html {
   scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+html, body {
+  background-color: #030712;
+  color: #fff;
 }
 
 @layer base {
