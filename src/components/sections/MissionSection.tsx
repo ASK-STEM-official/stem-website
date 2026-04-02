@@ -38,12 +38,12 @@ export default function MissionSection() {
   const visionStyle = useScrollReveal(scrollYProgress, 0.18, 0.36)
 
   // Pillars use direct useTransform (no springs) for instant scroll-sync
-  const p0opacity = useTransform(scrollYProgress, [0.40, 0.55], [0, 1])
-  const p0y = useTransform(scrollYProgress, [0.40, 0.55], [24, 0])
-  const p1opacity = useTransform(scrollYProgress, [0.47, 0.62], [0, 1])
-  const p1y = useTransform(scrollYProgress, [0.47, 0.62], [24, 0])
-  const p2opacity = useTransform(scrollYProgress, [0.54, 0.69], [0, 1])
-  const p2y = useTransform(scrollYProgress, [0.54, 0.69], [24, 0])
+  const p0opacity = useTransform(scrollYProgress, [0.36, 0.48], [0, 1])
+  const p0y = useTransform(scrollYProgress, [0.36, 0.48], [24, 0])
+  const p1opacity = useTransform(scrollYProgress, [0.42, 0.54], [0, 1])
+  const p1y = useTransform(scrollYProgress, [0.42, 0.54], [24, 0])
+  const p2opacity = useTransform(scrollYProgress, [0.48, 0.60], [0, 1])
+  const p2y = useTransform(scrollYProgress, [0.48, 0.60], [24, 0])
   const pillarStyles = [
     { opacity: p0opacity, y: p0y },
     { opacity: p1opacity, y: p1y },

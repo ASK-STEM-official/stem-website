@@ -80,7 +80,7 @@ const techStack = [
   { name: 'Infrastructure',  type: 'infra',    items: ['Linux', 'Network', 'GitHub'] },
 ]
 
-const SPRING = { stiffness: 80, damping: 28, mass: 0.8 }
+const SPRING = { stiffness: 200, damping: 28, mass: 0.5 }
 
 // ── Scroll-driven timeline row ───────────────────────
 function TimelineRow({

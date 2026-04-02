@@ -10,7 +10,7 @@ const stemData = [
   { letter: 'M', word: 'Mathematics', jp: '数学', desc: 'アルゴリズムやデータ分析を支える、すべての基礎。' },
 ]
 
-const SPRING = { stiffness: 80, damping: 28, mass: 0.8 }
+const SPRING = { stiffness: 200, damping: 28, mass: 0.5 }
 
 function StemLetterRow({
   item,
@@ -25,8 +25,8 @@ function StemLetterRow({
   const end = start + 0.14
 
   const rawOpacity = useTransform(scrollYProgress, [start, end], [0, 1])
-  const rawX = useTransform(scrollYProgress, [start, end], [120, 0])
-  const rawBlur = useTransform(scrollYProgress, [start, end], [4, 0])
+  const rawX = useTransform(scrollYProgress, [start, end], [60, 0])
+  const rawBlur = useTransform(scrollYProgress, [start, end], [2, 0])
 
   const opacity = useSpring(rawOpacity, SPRING)
   const x = useSpring(rawX, SPRING)
