@@ -1,0 +1,94 @@
+'use client'
+
+import { motion } from 'framer-motion'
+
+export default function MissionSection() {
+  return (
+    <section className="relative bg-brand-900 text-white py-32 overflow-hidden">
+      {/* animated gradient blobs */}
+      <motion.div
+        className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-brand-600/30 blur-[120px]"
+        animate={{ x: [0, 60, 0], y: [0, -40, 0] }}
+        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <motion.div
+        className="absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full bg-indigo-500/20 blur-[100px]"
+        animate={{ x: [0, -50, 0], y: [0, 50, 0] }}
+        transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
+      />
+
+      <div className="relative z-10 container mx-auto px-6 max-w-5xl">
+        {/* MISSION */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="mb-20"
+        >
+          <p className="text-brand-200 text-xs font-bold uppercase tracking-[0.3em] mb-6">
+            Mission
+          </p>
+          <h2 className="text-3xl md:text-5xl font-bold leading-tight">
+            最先端の技術と創造力を掛け合わせ、
+            <br />
+            <span className="text-brand-200">
+              誰も思いつかないアイデアを形にして社会へ発信する。
+            </span>
+          </h2>
+        </motion.div>
+
+        {/* divider */}
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: 'easeOut' }}
+          className="h-px bg-white/20 origin-left mb-20"
+        />
+
+        {/* VISION */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="mb-20"
+        >
+          <p className="text-brand-200 text-xs font-bold uppercase tracking-[0.3em] mb-6">
+            Vision
+          </p>
+          <h2 className="text-3xl md:text-5xl font-bold leading-tight">
+            全部員がAIを使いこなす技術集団となり、
+            <br />
+            <span className="text-brand-200">
+              競技会で全国トップレベルの実績を勝ち取る。
+            </span>
+          </h2>
+        </motion.div>
+
+        {/* 3 pillars */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+          {[
+            { label: 'Skill Up', desc: '技術力の向上', sub: '各班の専門技術を深め、大会・競技・自主制作を通じて実践的なスキルを身につける' },
+            { label: 'Team First', desc: 'チームで作る', sub: 'GitHubを活用して成果を共有・管理。コードレビューやドキュメント整備の文化を育成する' },
+            { label: 'Output', desc: '形にして届ける', sub: '公式Webサイト・ドキュメントサイトの充実、大会発表を通じて成果を外へ発信する' },
+          ].map((item, i) => (
+            <motion.div
+              key={item.label}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.15 }}
+              className="border border-white/10 rounded-2xl p-8 hover:border-brand-400/50 hover:bg-white/5 transition-all duration-300"
+            >
+              <div className="text-brand-300 text-xs font-bold uppercase tracking-widest mb-2">{item.label}</div>
+              <div className="text-white text-xl font-bold mb-3">{item.desc}</div>
+              <div className="text-white/60 text-sm leading-relaxed">{item.sub}</div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
