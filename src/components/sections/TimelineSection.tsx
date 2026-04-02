@@ -172,16 +172,18 @@ export default function TimelineSection() {
   const decodeProgress = useTransform(scrollYProgress, [0.02, 0.88], [0, 1])
 
   return (
-    <section id="history" className="relative overflow-hidden">
-      {/* Background grid */}
-      <div
-        className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.06)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(99,102,241,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.05)_1px,transparent_1px)] bg-[size:80px_80px]"
-        style={{
-          maskImage: 'linear-gradient(to bottom, transparent, black 8%, black 92%, transparent)',
-          WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 8%, black 92%, transparent)',
-        }}
-      />
-      <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-indigo-200/20 dark:bg-indigo-600/10 rounded-full blur-[120px]" />
+    <section id="history" className="relative">
+      {/* Background — clip decorative elements here, NOT on section */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.06)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(99,102,241,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.05)_1px,transparent_1px)] bg-[size:80px_80px]"
+          style={{
+            maskImage: 'linear-gradient(to bottom, transparent, black 8%, black 92%, transparent)',
+            WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 8%, black 92%, transparent)',
+          }}
+        />
+        <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-indigo-200/20 dark:bg-indigo-600/10 rounded-full blur-[120px]" />
+      </div>
 
       {/* ── PART 1: Sticky scroll timeline ── */}
       <div ref={timelineRef} style={{ height: '350vh' }}>
