@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import GlitchCode from '@/components/ui/GlitchCode'
 
 export default function MissionSection() {
   return (
@@ -27,31 +28,9 @@ export default function MissionSection() {
         transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
       />
 
-      {/* Decorative floating code snippets */}
-      <motion.pre
-        className="absolute top-20 right-8 sm:right-16 text-[10px] sm:text-xs font-mono text-brand-400/15 dark:text-brand-300/10 leading-relaxed select-none pointer-events-none whitespace-pre"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.5, delay: 0.5 }}
-      >{`const stem = {
-  science: true,
-  technology: true,
-  engineering: true,
-  mathematics: true,
-};`}</motion.pre>
-
-      <motion.pre
-        className="absolute bottom-32 left-6 sm:left-12 text-[10px] sm:text-xs font-mono text-brand-400/15 dark:text-brand-300/10 leading-relaxed select-none pointer-events-none whitespace-pre hidden sm:block"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.5, delay: 0.8 }}
-      >{`while (curious) {
-  learn();
-  build();
-  compete();
-}`}</motion.pre>
+      {/* Animated glitch code decoration */}
+      <GlitchCode className="absolute top-16 right-6 sm:right-16 text-[10px] sm:text-xs font-mono text-brand-400/15 dark:text-brand-300/10 leading-relaxed select-none pointer-events-none whitespace-pre" />
+      <GlitchCode className="absolute bottom-28 left-6 sm:left-12 text-[10px] sm:text-xs font-mono text-brand-400/15 dark:text-brand-300/10 leading-relaxed select-none pointer-events-none whitespace-pre hidden sm:block" />
 
       <div className="relative z-10 container mx-auto px-6 max-w-5xl">
         {/* MISSION */}
