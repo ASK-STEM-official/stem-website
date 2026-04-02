@@ -48,7 +48,7 @@ export default function AwardsSection() {
   const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '20%'])
 
   return (
-    <section ref={ref} id="awards" className="relative text-gray-900 dark:text-white pt-36 pb-20 overflow-hidden">
+    <section ref={ref} id="awards" className="relative text-gray-900 dark:text-white pt-24 sm:pt-36 pb-20 overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-white dark:from-gray-950 to-transparent z-[1]" />
       <motion.div
         className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.06)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(99,102,241,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.05)_1px,transparent_1px)] bg-[size:80px_80px]"
@@ -66,7 +66,7 @@ export default function AwardsSection() {
           className="mb-16"
         >
           <p className="text-brand-600 dark:text-indigo-400 text-xs font-mono font-bold uppercase tracking-[0.3em] mb-5">Awards & Records</p>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight">
             全国で証明する、
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-indigo-500 dark:from-indigo-400 dark:to-cyan-400">

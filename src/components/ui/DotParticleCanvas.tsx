@@ -7,6 +7,8 @@ interface DotParticleCanvasProps {
   className?: string
 }
 
+const EDGE_MARGIN = 120 // px – don't spawn particles near hero / footer edges
+
 export default function DotParticleCanvas({ className }: DotParticleCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const requestIdRef = useRef<number | null>(null)
@@ -33,7 +35,6 @@ export default function DotParticleCanvas({ className }: DotParticleCanvasProps)
     if (!canvas) return
     const wrapper = canvas.parentElement
     if (!wrapper) return
-    // Read the actual content height from the positioning parent (<main>)
     const container = wrapper.parentElement ?? wrapper
     const dpr = window.devicePixelRatio || 1
     const w = container.clientWidth
@@ -48,25 +49,27 @@ export default function DotParticleCanvas({ className }: DotParticleCanvasProps)
     if (ctx) ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
   }, [])
 
-  // Listen on document so clicks pass through z-10 content
-  const handleClick = useCallback((e: MouseEvent) => {
+  const spawnParticles = useCallback((clientX: number, clientY: number) => {
     const canvas = canvasRef.current
     if (!canvas) return
     const rect = canvas.getBoundingClientRect()
 
-    // Only spawn particles if click is within canvas bounds
     if (
-      e.clientX < rect.left || e.clientX > rect.right ||
-      e.clientY < rect.top || e.clientY > rect.bottom
+      clientX < rect.left || clientX > rect.right ||
+      clientY < rect.top || clientY > rect.bottom
     ) return
 
-    const x = e.clientX - rect.left
-    const y = e.clientY - rect.top
+    const x = clientX - rect.left
+    const y = clientY - rect.top
+    const canvasH = canvas.clientHeight
 
-    const count = 25 + Math.random() * 15
+    // Don't spawn near the top (hero boundary) or bottom (footer boundary)
+    if (y < EDGE_MARGIN || y > canvasH - EDGE_MARGIN) return
+
+    const count = 20 + Math.random() * 12
     for (let i = 0; i < count; i++) {
       const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.5
-      const speed = 2 + Math.random() * 4
+      const speed = 1.5 + Math.random() * 3
       particles.current.push({
         x: x + (Math.random() - 0.5) * 10,
         y: y + (Math.random() - 0.5) * 10,
@@ -74,25 +77,34 @@ export default function DotParticleCanvas({ className }: DotParticleCanvasProps)
         vy: Math.sin(angle) * speed,
         life: 0,
         maxLife: 2000 + Math.random() * 3000,
-        size: 1 + Math.random() * 3,
+        size: 1 + Math.random() * 2.5,
         angle,
       })
     }
 
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 6; i++) {
       const angle = Math.random() * Math.PI * 2
-      const speed = 0.5 + Math.random() * 1.5
+      const speed = 0.4 + Math.random() * 1.2
       particles.current.push({
         x, y,
         vx: Math.cos(angle) * speed,
         vy: Math.sin(angle) * speed,
         life: 0,
-        maxLife: 4000 + Math.random() * 2000,
-        size: 2 + Math.random() * 2,
+        maxLife: 3000 + Math.random() * 2000,
+        size: 1.5 + Math.random() * 2,
         angle,
       })
     }
   }, [])
+
+  const handleMouseDown = useCallback((e: MouseEvent) => {
+    spawnParticles(e.clientX, e.clientY)
+  }, [spawnParticles])
+
+  const handleTouchStart = useCallback((e: TouchEvent) => {
+    const touch = e.touches[0]
+    if (touch) spawnParticles(touch.clientX, touch.clientY)
+  }, [spawnParticles])
 
   const animate = useCallback(() => {
     const canvas = canvasRef.current
@@ -141,9 +153,9 @@ export default function DotParticleCanvas({ className }: DotParticleCanvasProps)
 
     resizeCanvas()
     window.addEventListener('resize', resizeCanvas)
-    document.addEventListener('mousedown', handleClick)
+    document.addEventListener('mousedown', handleMouseDown)
+    document.addEventListener('touchstart', handleTouchStart, { passive: true })
 
-    // Watch <main> for content height changes (e.g. FAQ accordion expand)
     let ro: ResizeObserver | null = null
     if (container) {
       ro = new ResizeObserver(() => resizeCanvas())
@@ -154,13 +166,14 @@ export default function DotParticleCanvas({ className }: DotParticleCanvasProps)
 
     return () => {
       window.removeEventListener('resize', resizeCanvas)
-      document.removeEventListener('mousedown', handleClick)
+      document.removeEventListener('mousedown', handleMouseDown)
+      document.removeEventListener('touchstart', handleTouchStart)
       ro?.disconnect()
       if (requestIdRef.current) cancelAnimationFrame(requestIdRef.current)
       timeRef.current = 0
       particles.current = []
     }
-  }, [animate, resizeCanvas, handleClick])
+  }, [animate, resizeCanvas, handleMouseDown, handleTouchStart])
 
   return (
     <div className={className}>

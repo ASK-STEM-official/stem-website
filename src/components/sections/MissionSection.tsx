@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 export default function MissionSection() {
   return (
-    <section id="mission" className="relative bg-brand-50 dark:bg-gray-950 text-gray-900 dark:text-white py-36 overflow-hidden">
+    <section id="mission" className="relative bg-brand-50 dark:bg-gray-950 text-gray-900 dark:text-white py-24 sm:py-36 overflow-hidden">
       {/* Subtle indigo tint overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-brand-100/60 via-brand-50/30 to-transparent dark:from-brand-900/40 dark:via-brand-900/20 dark:to-transparent" />
 
@@ -36,9 +36,9 @@ export default function MissionSection() {
           <p className="text-brand-600 dark:text-brand-200 text-xs font-bold uppercase tracking-[0.3em] mb-8">
             Mission
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold leading-[1.3] tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold leading-[1.3] tracking-tight">
             技術と好奇心を掛け合わせ、
-            <br />
+            <br className="hidden sm:block" />
             <span className="text-brand-600 dark:text-brand-200">
               自分たちのアイデアを形にする。
             </span>
@@ -51,7 +51,7 @@ export default function MissionSection() {
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, ease: 'easeOut' }}
-          className="h-px bg-gray-200 dark:bg-white/20 origin-left mb-20"
+          className="h-px bg-gray-200 dark:bg-white/20 origin-left mb-12 sm:mb-20"
         />
 
         {/* VISION */}
@@ -60,14 +60,14 @@ export default function MissionSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="mb-20"
+          className="mb-12 sm:mb-20"
         >
-          <p className="text-brand-600 dark:text-brand-200 text-xs font-bold uppercase tracking-[0.3em] mb-8">
+          <p className="text-brand-600 dark:text-brand-200 text-xs font-bold uppercase tracking-[0.3em] mb-6 sm:mb-8">
             Vision
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold leading-[1.3] tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold leading-[1.3] tracking-tight">
             全部員がAIを使いこなす技術集団となり、
-            <br />
+            <br className="hidden sm:block" />
             <span className="text-brand-600 dark:text-brand-200">
               競技会で全国トップレベルの実績を勝ち取る。
             </span>
@@ -75,7 +75,7 @@ export default function MissionSection() {
         </motion.div>
 
         {/* 3 pillars */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-12 sm:mt-20">
           {[
             { label: 'Skill Up', desc: '技術力の向上', sub: '各班の専門技術を深め、大会・競技・自主制作を通じて実践的なスキルを身につける' },
             { label: 'Team First', desc: 'チームで作る', sub: 'GitHubを活用して成果を共有・管理。コードレビューやドキュメント整備の文化を育成する' },

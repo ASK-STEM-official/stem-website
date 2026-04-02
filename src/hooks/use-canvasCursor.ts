@@ -105,6 +105,9 @@ class Line {
 
 export default function useCanvasCursor(canvasId: string) {
   useEffect(() => {
+    // Skip on touch-only devices (no mouse pointer)
+    if (typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches) return
+
     const canvas = document.getElementById(canvasId) as HTMLCanvasElement | null
     if (!canvas) return
 

@@ -36,7 +36,7 @@ export default function HeroSection() {
         </FadeInUp>
 
         <FadeInUp delay={0.1}>
-          <h1 className="text-5xl md:text-7xl font-bold leading-[1.15] tracking-tight mb-8">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold leading-[1.15] tracking-tight mb-6 sm:mb-8">
             好奇心を武器に、
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-700 via-brand-500 to-indigo-600 dark:from-indigo-200 dark:via-white dark:to-cyan-200">
@@ -46,13 +46,13 @@ export default function HeroSection() {
         </FadeInUp>
 
         <FadeInUp delay={0.2}>
-          <p className="text-lg md:text-xl text-gray-600 dark:text-white/70 max-w-2xl mx-auto mb-12 leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-white/70 max-w-2xl mx-auto mb-10 sm:mb-12 leading-relaxed px-2">
             愛知総合工科高等学校 STEM研究部。プログラミング、ロボット、ゲーム開発。未経験から始めて、仲間と一緒に全国大会を目指す部活です。
           </p>
         </FadeInUp>
 
         <FadeInUp delay={0.4}>
-          <div className="flex gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center w-full sm:w-auto px-4 sm:px-0">
             <Button variant="primary" href="#mission">
               部活について知る
             </Button>
@@ -77,7 +77,7 @@ export default function HeroSection() {
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-[6rem] left-1/2 -translate-x-1/2 z-20"
+        className="absolute bottom-24 sm:bottom-[6rem] left-1/2 -translate-x-1/2 z-20"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
       >

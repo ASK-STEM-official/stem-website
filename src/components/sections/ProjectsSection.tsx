@@ -14,7 +14,7 @@ export default function ProjectsSection() {
           <p className="text-brand-600 dark:text-brand-500 font-mono text-xs uppercase tracking-[0.3em] mb-4">
             Teams
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5 leading-[1.2] tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-5 leading-[1.2] tracking-tight">
             6つの専門班が、
             <br />
             それぞれの頂点を目指す。
