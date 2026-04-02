@@ -9,6 +9,7 @@ const navLinks = [
   { label: 'プロジェクト', href: '#projects' },
   { label: '実績', href: '#awards' },
   { label: '沿革', href: '#history' },
+  { label: 'FAQ', href: '#faq' },
 ]
 
 export default function Navigation() {

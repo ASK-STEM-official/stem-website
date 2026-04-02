@@ -5,6 +5,7 @@ import MissionSection from '@/components/sections/MissionSection'
 import ProjectsSection from '@/components/sections/ProjectsSection'
 import AwardsSection from '@/components/sections/AwardsSection'
 import TimelineSection from '@/components/sections/TimelineSection'
+import FAQSection from '@/components/sections/FAQSection'
 import Footer from '@/components/layout/Footer'
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
         <ProjectsSection />
         <AwardsSection />
         <TimelineSection />
+        <FAQSection />
       </main>
       <Footer />
     </>
