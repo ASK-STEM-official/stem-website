@@ -4,7 +4,6 @@ import { motion } from 'framer-motion'
 import FadeInUp from '@/components/animations/FadeInUp'
 import MarqueeText from '@/components/animations/MarqueeText'
 import Button from '@/components/ui/Button'
-import DotParticleCanvas from '@/components/ui/DotParticleCanvas'
 import CanvasCursor from '@/components/ui/CanvasCursor'
 
 const marqueeItems = [
@@ -19,14 +18,11 @@ const marqueeItems = [
 
 export default function HeroSection() {
   return (
-    <section className="relative h-screen min-h-[600px] flex flex-col items-center justify-center overflow-hidden">
-      {/* Layer 1: Interactive particle background (base) */}
-      <DotParticleCanvas className="absolute inset-0 w-full h-full z-0" />
-
-      {/* Layer 2: Flowing cursor lines (behind text, above particle bg) */}
+    <section className="relative h-screen min-h-[600px] flex flex-col items-center justify-center overflow-hidden bg-[#f0eef5] dark:bg-[#030712]">
+      {/* Flowing cursor lines (behind text) */}
       <CanvasCursor className="absolute inset-0 w-full h-full z-[1] pointer-events-none" />
 
-      {/* Layer 3: Content (above everything) */}
+      {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto flex-1 flex flex-col items-center justify-center">
         <FadeInUp>
           <motion.p

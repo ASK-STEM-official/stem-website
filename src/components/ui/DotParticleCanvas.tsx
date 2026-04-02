@@ -27,7 +27,6 @@ export default function DotParticleCanvas({ className }: DotParticleCanvasProps)
   const { resolvedTheme } = useTheme()
 
   const isDark = resolvedTheme === 'dark'
-  const bgColor = isDark ? '#030712' : '#f0eef5'
   const pColor = isDark ? '165, 180, 252' : '99, 102, 241'
 
   const resizeCanvas = useCallback(() => {
@@ -107,8 +106,7 @@ export default function DotParticleCanvas({ className }: DotParticleCanvasProps)
     const w = canvas.clientWidth
     const h = canvas.clientHeight
 
-    ctx.fillStyle = bgColor
-    ctx.fillRect(0, 0, w, h)
+    ctx.clearRect(0, 0, w, h)
 
     particles.current = particles.current.filter((p) => {
       p.life += 16
@@ -135,7 +133,7 @@ export default function DotParticleCanvas({ className }: DotParticleCanvasProps)
     })
 
     requestIdRef.current = requestAnimationFrame(animate)
-  }, [bgColor, pColor])
+  }, [pColor])
 
   useEffect(() => {
     const canvas = canvasRef.current

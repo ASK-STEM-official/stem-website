@@ -89,7 +89,7 @@ function FAQItemComponent({ item, index }: { item: FAQItem; index: number }) {
 export default function FAQSection() {
   return (
     <SectionWrapper id="faq">
-      <div className="mb-16">
+      <div className="text-center mb-16">
         <span className="inline-block font-mono text-xs text-brand-600 dark:text-brand-400 tracking-[0.3em] uppercase mb-4">
           FAQ
         </span>
@@ -98,7 +98,7 @@ export default function FAQSection() {
         </h2>
       </div>
 
-      <div className="max-w-3xl">
+      <div className="max-w-3xl mx-auto">
         {faqData.map((item, index) => (
           <FAQItemComponent key={index} item={item} index={index} />
         ))}
