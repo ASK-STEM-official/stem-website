@@ -1,10 +1,10 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import ParallaxLayer from '@/components/animations/ParallaxLayer'
 import FadeInUp from '@/components/animations/FadeInUp'
 import MarqueeText from '@/components/animations/MarqueeText'
 import Button from '@/components/ui/Button'
+import DotParticleCanvas from '@/components/ui/DotParticleCanvas'
 
 const marqueeItems = [
   'ETロボコン全国大会',
@@ -19,32 +19,8 @@ const marqueeItems = [
 export default function HeroSection() {
   return (
     <section className="relative h-screen min-h-[600px] flex flex-col items-center justify-center overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-brand-50 via-brand-100 to-white dark:from-gray-950 dark:via-brand-900 dark:to-gray-950" />
-
-      {/* Animated gradient orbs */}
-      <motion.div
-        className="absolute top-10 -left-20 w-[500px] h-[500px] bg-brand-200/30 dark:bg-indigo-500/20 rounded-full blur-[120px]"
-        animate={{ x: [0, 80, 0], y: [0, 40, 0] }}
-        transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
-      />
-      <motion.div
-        className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-violet-200/30 dark:bg-violet-600/15 rounded-full blur-[140px]"
-        animate={{ x: [0, -60, 0], y: [0, -50, 0] }}
-        transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
-      />
-
-      {/* Geometric decorations with parallax */}
-      <ParallaxLayer speed={0.1} className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-brand-100/40 dark:bg-white/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-32 right-20 w-96 h-96 bg-indigo-100/40 dark:bg-indigo-400/10 rounded-full blur-3xl" />
-      </ParallaxLayer>
-      <ParallaxLayer speed={0.2} className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/3 w-48 h-48 bg-brand-100/30 dark:bg-brand-200/5 rounded-full blur-2xl" />
-      </ParallaxLayer>
-
-      {/* Dot pattern overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(99,102,241,0.08)_1px,transparent_0)] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.1)_1px,transparent_0)] bg-[size:40px_40px] opacity-30" />
+      {/* Interactive particle background */}
+      <DotParticleCanvas className="absolute inset-0 w-full h-full" />
 
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto flex-1 flex flex-col items-center justify-center">

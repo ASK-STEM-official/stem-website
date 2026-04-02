@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Noto_Sans_JP, Inter, JetBrains_Mono } from 'next/font/google'
 import { cn } from '@/lib/utils'
 import ThemeProvider from '@/components/ThemeProvider'
-import CustomCursor from '@/components/ui/CustomCursor'
 import './globals.css'
 
 const notoSansJP = Noto_Sans_JP({
@@ -36,7 +35,6 @@ export default function RootLayout({
     <html lang="ja" suppressHydrationWarning>
       <body className={cn(notoSansJP.variable, inter.variable, jetbrainsMono.variable, 'font-sans antialiased bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors duration-300')}>
         <ThemeProvider>
-          <CustomCursor />
           {children}
         </ThemeProvider>
       </body>
