@@ -31,8 +31,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ja">
-      <body className={cn(notoSansJP.variable, inter.variable, jetbrainsMono.variable, 'font-sans antialiased')}>
+    <html lang="ja" className="dark">
+      <body className={cn(notoSansJP.variable, inter.variable, jetbrainsMono.variable, 'font-sans antialiased bg-gray-950 text-white')}>
         {children}
       </body>
     </html>

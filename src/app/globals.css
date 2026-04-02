@@ -20,7 +20,7 @@ html {
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-gray-100;
+    @apply bg-gray-900;
   }
 
   ::-webkit-scrollbar-thumb {
