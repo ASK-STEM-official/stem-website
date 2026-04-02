@@ -1,7 +1,8 @@
 'use client'
 
 import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform, useSpring, type MotionValue } from 'framer-motion'
+import ScrollDecodeCode from '@/components/ui/ScrollDecodeCode'
 
 // ── Timeline data ────────────────────────────────────
 const milestones = [
@@ -12,6 +13,7 @@ const milestones = [
       'WRO Japan 浜松予選 シニア3位',
       '若年者ものづくり競技大会 出場',
     ],
+    hash: 'f8c2a1d',
   },
   {
     year: '2024',
@@ -23,6 +25,7 @@ const milestones = [
       '技能五輪全国大会 ウェブデザイン 出場',
     ],
     highlight: true,
+    hash: 'b3e7f1a',
   },
   {
     year: '2023',
@@ -32,6 +35,7 @@ const milestones = [
       '若年者ものづくり 業務用IT 敢闘賞',
       '技能五輪全国大会 ウェブデザイン 出場',
     ],
+    hash: '4d9c8b2',
   },
   {
     year: '2022',
@@ -39,6 +43,7 @@ const milestones = [
       'ETロボコン 初参戦',
       'LEGOロボット班 新設',
     ],
+    hash: '91a5e3f',
   },
   {
     year: '2021',
@@ -46,14 +51,17 @@ const milestones = [
       '技能五輪全国大会 初出場',
       '日本ゲーム大賞 U18部門 ファイナリスト',
     ],
+    hash: 'c7d2b6e',
   },
   {
     year: '2019',
     items: ['若年者ものづくり ウェブデザイン 銅賞'],
+    hash: '5f8a4c1',
   },
   {
     year: '2017',
     items: ['STEM研究部 創部'],
+    hash: '0a1b2c3',
   },
 ]
 
@@ -72,146 +80,192 @@ const techStack = [
   { name: 'Infrastructure',  type: 'infra',    items: ['Linux', 'Network', 'GitHub'] },
 ]
 
-// ── Sub-components ───────────────────────────────────
-function YearEntry({ data, index }: { data: (typeof milestones)[number] & { highlight?: boolean }; index: number }) {
+const SPRING = { stiffness: 80, damping: 28, mass: 0.8 }
+
+// ── Scroll-driven timeline row ───────────────────────
+function TimelineRow({
+  data,
+  index,
+  total,
+  scrollYProgress,
+}: {
+  data: (typeof milestones)[number]
+  index: number
+  total: number
+  scrollYProgress: MotionValue<number>
+}) {
+  const perItem = 0.84 / total
+  const start = 0.04 + index * perItem
+  const end = start + perItem * 0.78
+
+  const rawOpacity = useTransform(scrollYProgress, [start, end], [0, 1])
+  const rawX = useTransform(scrollYProgress, [start, end], [100, 0])
+  const rawBlur = useTransform(scrollYProgress, [start, end], [10, 0])
+
+  const opacity = useSpring(rawOpacity, SPRING)
+  const x = useSpring(rawX, SPRING)
+  const blur = useSpring(rawBlur, SPRING)
+  const filter = useTransform(blur, (v) => `blur(${v}px)`)
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.5, delay: index * 0.06 }}
-      className="flex items-start gap-4 sm:gap-6"
+      style={{ opacity, x, filter }}
+      className="flex items-start gap-2 sm:gap-4 md:gap-5"
     >
-      {/* Node */}
-      <div className="w-4 shrink-0 flex justify-center pt-[7px]">
-        {data.highlight ? (
-          <motion.div
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ type: 'spring', stiffness: 400, damping: 15, delay: index * 0.06 + 0.1 }}
-            className="w-4 h-4 rounded-full bg-gradient-to-br from-brand-500 to-indigo-400 shadow-[0_0_16px_4px_rgba(99,102,241,0.4)]"
-          />
-        ) : (
-          <div className="w-3 h-3 rounded-full border-2 border-brand-500/60 bg-white dark:bg-gray-950" />
-        )}
-      </div>
-
-      {/* Content */}
-      <div className="flex-1 min-w-0 pb-8 sm:pb-10">
+      {/* Year */}
+      <div className="shrink-0 w-12 sm:w-[4.5rem] md:w-24 text-right">
         <span
-          className={`text-lg sm:text-xl font-bold tabular-nums ${
-            data.highlight ? 'text-brand-600 dark:text-brand-400' : 'text-gray-500 dark:text-white/70'
+          className={`text-lg sm:text-2xl md:text-4xl font-black font-mono leading-none select-none tabular-nums ${
+            data.highlight
+              ? 'text-brand-600 dark:text-brand-400'
+              : 'text-gray-300 dark:text-white/15'
           }`}
         >
           {data.year}
         </span>
-        <ul className="mt-2 space-y-1">
+      </div>
+
+      {/* Node */}
+      <div className="shrink-0 flex justify-center w-3 sm:w-4 pt-[3px] sm:pt-[5px]">
+        {data.highlight ? (
+          <div className="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-brand-500 shadow-[0_0_12px_3px_rgba(99,102,241,0.4)]" />
+        ) : (
+          <div className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full border-[1.5px] sm:border-2 border-brand-500/40 bg-white dark:bg-gray-950" />
+        )}
+      </div>
+
+      {/* Content */}
+      <div className="flex-1 min-w-0">
+        <ul className="space-y-0">
           {data.items.map((item, j) => (
             <li
               key={j}
-              className={`text-sm leading-relaxed ${data.highlight ? 'text-gray-700 dark:text-white/80' : 'text-gray-500 dark:text-white/60'}`}
+              className={`text-[10px] sm:text-xs md:text-sm leading-relaxed ${
+                data.highlight
+                  ? 'text-gray-700 dark:text-white/80'
+                  : 'text-gray-500 dark:text-white/55'
+              }`}
             >
               {item}
             </li>
           ))}
         </ul>
       </div>
+
+      {/* Ghost commit hash */}
+      <span className="hidden md:block shrink-0 text-[11px] font-mono text-gray-200 dark:text-white/[0.06] select-none tabular-nums">
+        {data.hash}
+      </span>
     </motion.div>
   )
 }
 
 // ── Main component ───────────────────────────────────
 export default function TimelineSection() {
-  const ref = useRef<HTMLDivElement>(null)
+  const timelineRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start end', 'end end'],
+    target: timelineRef,
+    offset: ['start start', 'end end'],
   })
-  const lineHeight = useTransform(scrollYProgress, [0, 0.85], ['0%', '100%'])
+
+  // Decode code resolves over roughly the same range as timeline entries
+  const decodeProgress = useTransform(scrollYProgress, [0.02, 0.88], [0, 1])
 
   return (
-    <section ref={ref} id="history" className="relative pt-20 pb-28 md:pb-36 overflow-hidden">
-      {/* Bottom fade for seamless blending into footer */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white dark:from-gray-950 to-transparent z-[1]" />
-      {/* Background grid with edge fade */}
+    <section id="history" className="relative overflow-hidden">
+      {/* Background grid */}
       <div
         className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.06)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(99,102,241,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.05)_1px,transparent_1px)] bg-[size:80px_80px]"
-        style={{ maskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)', WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)' }}
+        style={{
+          maskImage: 'linear-gradient(to bottom, transparent, black 8%, black 92%, transparent)',
+          WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 8%, black 92%, transparent)',
+        }}
       />
       <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-indigo-200/20 dark:bg-indigo-600/10 rounded-full blur-[120px]" />
 
-      <div className="relative z-10 container mx-auto px-6 max-w-4xl">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16 md:mb-20"
-        >
-          <p className="text-brand-600 dark:text-brand-400 text-xs font-mono font-bold uppercase tracking-[0.3em] mb-4">History</p>
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white leading-tight tracking-tight">
-            沿革
-          </h2>
-        </motion.div>
+      {/* ── PART 1: Sticky scroll timeline ── */}
+      <div ref={timelineRef} style={{ height: '350vh' }}>
+        <div className="sticky top-0 h-screen flex items-center overflow-hidden">
+          {/* Decode code background — fills viewport, resolves with scroll */}
+          <div className="absolute inset-0 flex items-center justify-center overflow-hidden p-6 sm:p-10">
+            <ScrollDecodeCode
+              scrollProgress={decodeProgress}
+              className="text-[9px] sm:text-[11px] md:text-xs leading-[1.9] text-gray-900/[0.06] dark:text-white/[0.04]"
+            />
+          </div>
 
-        {/* Timeline */}
-        <div className="relative">
-          <div className="absolute left-[7px] top-[7px] bottom-[7px] w-[2px] bg-gray-200 dark:bg-white/10 rounded-full" />
-          <motion.div
-            className="absolute left-[7px] top-[7px] w-[2px] rounded-full bg-gradient-to-b from-brand-400 via-brand-500 to-brand-600 origin-top"
-            style={{ height: lineHeight }}
-          />
+          {/* Timeline content */}
+          <div className="relative z-10 container mx-auto px-4 sm:px-6 max-w-5xl w-full">
+            <p className="text-brand-600 dark:text-brand-400 text-xs font-mono font-bold uppercase tracking-[0.3em] mb-2">
+              History
+            </p>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 dark:text-white leading-tight tracking-tight mb-6 sm:mb-10">
+              沿革
+            </h2>
 
-          {milestones.map((m, i) => (
-            <YearEntry key={m.year} data={m} index={i} />
-          ))}
+            <div className="space-y-2 sm:space-y-3 md:space-y-4">
+              {milestones.map((m, i) => (
+                <TimelineRow
+                  key={m.year}
+                  data={m}
+                  index={i}
+                  total={milestones.length}
+                  scrollYProgress={scrollYProgress}
+                />
+              ))}
+            </div>
+          </div>
         </div>
+      </div>
 
-        {/* Tech Stack */}
+      {/* ── PART 2: Tech Stack (normal scroll) ── */}
+      <div className="relative z-10 container mx-auto px-6 max-w-4xl pt-16 sm:pt-20 pb-28 md:pb-36">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
+          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-20 md:mt-28"
         >
-          <p className="text-brand-600 dark:text-brand-400 text-xs font-mono font-bold uppercase tracking-[0.3em] mb-4">Tech Stack</p>
+          <p className="text-brand-600 dark:text-brand-400 text-xs font-mono font-bold uppercase tracking-[0.3em] mb-4">
+            Tech Stack
+          </p>
           <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-12 tracking-tight">
             使用技術
           </h3>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            {techStack.map((cat, i) => {
-              const c = CATEGORY_STYLE[cat.type]
-              return (
-                <motion.div
-                  key={cat.name}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                >
-                  <p className={`text-xs font-bold uppercase tracking-widest mb-3 ${c.heading}`}>
-                    {cat.name}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {cat.items.map((item) => (
-                      <span
-                        key={item}
-                        className={`text-xs px-3 py-1.5 rounded-full border ${c.pill}`}
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </motion.div>
-              )
-            })}
-          </div>
         </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          {techStack.map((cat, i) => {
+            const c = CATEGORY_STYLE[cat.type]
+            return (
+              <motion.div
+                key={cat.name}
+                initial={{ opacity: 0, y: 20, filter: 'blur(6px)' }}
+                whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+              >
+                <p className={`text-xs font-bold uppercase tracking-widest mb-3 ${c.heading}`}>
+                  {cat.name}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {cat.items.map((item) => (
+                    <span
+                      key={item}
+                      className={`text-xs px-3 py-1.5 rounded-full border ${c.pill}`}
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            )
+          })}
+        </div>
       </div>
+
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white dark:from-gray-950 to-transparent z-[1]" />
     </section>
   )
 }
