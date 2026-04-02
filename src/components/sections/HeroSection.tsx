@@ -20,16 +20,16 @@ export default function HeroSection() {
   return (
     <section className="relative h-screen min-h-[600px] flex flex-col items-center justify-center overflow-hidden">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-brand-900 via-brand-600 to-indigo-800" />
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-brand-900 to-indigo-950" />
 
       {/* Animated gradient orbs */}
       <motion.div
-        className="absolute top-10 -left-20 w-[500px] h-[500px] bg-indigo-500/30 rounded-full blur-[120px]"
+        className="absolute top-10 -left-20 w-[500px] h-[500px] bg-indigo-600/15 rounded-full blur-[120px]"
         animate={{ x: [0, 80, 0], y: [0, 40, 0] }}
         transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
       />
       <motion.div
-        className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-violet-600/20 rounded-full blur-[140px]"
+        className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-violet-600/10 rounded-full blur-[140px]"
         animate={{ x: [0, -60, 0], y: [0, -50, 0] }}
         transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
       />
