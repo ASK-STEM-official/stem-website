@@ -8,6 +8,9 @@ export default function MissionSection() {
       {/* Subtle indigo tint overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-brand-100/60 via-brand-50/30 to-transparent dark:from-brand-900/40 dark:via-brand-900/20 dark:to-transparent" />
 
+      {/* Dot pattern */}
+      <div className="absolute inset-0 bg-dot-pattern opacity-50" />
+
       {/* Top/bottom fades for seamless blending */}
       <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-white dark:from-gray-950 to-transparent z-[1]" />
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white dark:from-gray-950 to-transparent z-[1]" />
@@ -23,6 +26,32 @@ export default function MissionSection() {
         animate={{ x: [0, -50, 0], y: [0, 50, 0] }}
         transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
       />
+
+      {/* Decorative floating code snippets */}
+      <motion.pre
+        className="absolute top-20 right-8 sm:right-16 text-[10px] sm:text-xs font-mono text-brand-400/15 dark:text-brand-300/10 leading-relaxed select-none pointer-events-none whitespace-pre"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.5, delay: 0.5 }}
+      >{`const stem = {
+  science: true,
+  technology: true,
+  engineering: true,
+  mathematics: true,
+};`}</motion.pre>
+
+      <motion.pre
+        className="absolute bottom-32 left-6 sm:left-12 text-[10px] sm:text-xs font-mono text-brand-400/15 dark:text-brand-300/10 leading-relaxed select-none pointer-events-none whitespace-pre hidden sm:block"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.5, delay: 0.8 }}
+      >{`while (curious) {
+  learn();
+  build();
+  compete();
+}`}</motion.pre>
 
       <div className="relative z-10 container mx-auto px-6 max-w-5xl">
         {/* MISSION */}

@@ -18,6 +18,8 @@ export default function SectionWrapper({
 }: SectionWrapperProps) {
   return (
     <section id={id} className={cn('relative', className)}>
+      {/* Dot-grid pattern on all SectionWrapper sections */}
+      <div className="absolute inset-0 bg-dot-pattern" style={{ maskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)', WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)' }} />
       {background === 'subtle' && (
         <div className="absolute inset-0 bg-gray-50/50 dark:bg-white/[0.02]" />
       )}
