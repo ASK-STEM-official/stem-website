@@ -30,20 +30,20 @@ export default function MissionSection() {
     offset: ['start start', 'end end'],
   })
 
-  const missionStyle = useScrollReveal(scrollYProgress, 0.00, 0.14)
+  const missionStyle = useScrollReveal(scrollYProgress, 0.00, 0.10)
 
-  const dividerRaw = useTransform(scrollYProgress, [0.14, 0.24], [0, 1])
+  const dividerRaw = useTransform(scrollYProgress, [0.10, 0.16], [0, 1])
   const dividerScale = useSpring(dividerRaw, SPRING)
 
-  const visionStyle = useScrollReveal(scrollYProgress, 0.24, 0.42)
+  const visionStyle = useScrollReveal(scrollYProgress, 0.16, 0.30)
 
-  const pillar0 = useScrollReveal(scrollYProgress, 0.50, 0.62)
-  const pillar1 = useScrollReveal(scrollYProgress, 0.56, 0.68)
-  const pillar2 = useScrollReveal(scrollYProgress, 0.62, 0.74)
+  const pillar0 = useScrollReveal(scrollYProgress, 0.33, 0.42)
+  const pillar1 = useScrollReveal(scrollYProgress, 0.37, 0.46)
+  const pillar2 = useScrollReveal(scrollYProgress, 0.41, 0.50)
   const pillarStyles = [pillar0, pillar1, pillar2]
 
   return (
-    <section ref={containerRef} id="mission" className="relative" style={{ height: '200vh' }}>
+    <section ref={containerRef} id="mission" className="relative" style={{ height: '250vh' }}>
       <div className="sticky top-0 h-screen flex items-center overflow-hidden bg-brand-50 dark:bg-gray-950 text-gray-900 dark:text-white" style={{ height: '100dvh' }}>
         {/* Decorations */}
         <div className="absolute inset-0 bg-gradient-to-b from-brand-100/60 via-brand-50/30 to-transparent dark:from-brand-900/40 dark:via-brand-900/20 dark:to-transparent" />
