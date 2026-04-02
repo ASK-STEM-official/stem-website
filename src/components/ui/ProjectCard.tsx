@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { itemVariants } from '@/components/animations/StaggerContainer'
 import type { Project } from '@/types'
 import Image from 'next/image'
-import { cn } from '@/lib/utils'
+
 
 interface ProjectCardProps {
   project: Project
