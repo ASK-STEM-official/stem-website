@@ -9,7 +9,7 @@ const SPRING = { stiffness: 80, damping: 28, mass: 0.8 }
 function useScrollReveal(progress: MotionValue<number>, start: number, end: number) {
   const rawOpacity = useTransform(progress, [start, end], [0, 1])
   const rawY = useTransform(progress, [start, end], [40, 0])
-  const rawBlur = useTransform(progress, [start, end], [10, 0])
+  const rawBlur = useTransform(progress, [start, end], [3, 0])
   const opacity = useSpring(rawOpacity, SPRING)
   const y = useSpring(rawY, SPRING)
   const blur = useSpring(rawBlur, SPRING)
@@ -30,16 +30,16 @@ export default function MissionSection() {
     offset: ['start start', 'end end'],
   })
 
-  const missionStyle = useScrollReveal(scrollYProgress, 0.04, 0.22)
+  const missionStyle = useScrollReveal(scrollYProgress, 0.00, 0.14)
 
-  const dividerRaw = useTransform(scrollYProgress, [0.26, 0.36], [0, 1])
+  const dividerRaw = useTransform(scrollYProgress, [0.14, 0.24], [0, 1])
   const dividerScale = useSpring(dividerRaw, SPRING)
 
-  const visionStyle = useScrollReveal(scrollYProgress, 0.40, 0.58)
+  const visionStyle = useScrollReveal(scrollYProgress, 0.24, 0.42)
 
-  const pillar0 = useScrollReveal(scrollYProgress, 0.64, 0.76)
-  const pillar1 = useScrollReveal(scrollYProgress, 0.70, 0.82)
-  const pillar2 = useScrollReveal(scrollYProgress, 0.76, 0.88)
+  const pillar0 = useScrollReveal(scrollYProgress, 0.50, 0.62)
+  const pillar1 = useScrollReveal(scrollYProgress, 0.56, 0.68)
+  const pillar2 = useScrollReveal(scrollYProgress, 0.62, 0.74)
   const pillarStyles = [pillar0, pillar1, pillar2]
 
   return (

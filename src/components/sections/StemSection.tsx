@@ -21,12 +21,12 @@ function StemLetterRow({
   index: number
   scrollYProgress: MotionValue<number>
 }) {
-  const start = 0.04 + index * 0.17
-  const end = start + 0.18
+  const start = 0.01 + index * 0.15
+  const end = start + 0.14
 
   const rawOpacity = useTransform(scrollYProgress, [start, end], [0, 1])
   const rawX = useTransform(scrollYProgress, [start, end], [120, 0])
-  const rawBlur = useTransform(scrollYProgress, [start, end], [12, 0])
+  const rawBlur = useTransform(scrollYProgress, [start, end], [4, 0])
 
   const opacity = useSpring(rawOpacity, SPRING)
   const x = useSpring(rawX, SPRING)
@@ -75,7 +75,7 @@ export default function StemSection() {
     offset: ['start start', 'end end'],
   })
 
-  const subtitleRaw = useTransform(scrollYProgress, [0.78, 0.88], [0, 1])
+  const subtitleRaw = useTransform(scrollYProgress, [0.62, 0.72], [0, 1])
   const subtitleOpacity = useSpring(subtitleRaw, SPRING)
 
   return (
@@ -85,7 +85,7 @@ export default function StemSection() {
           <p className="text-brand-600 dark:text-brand-400 font-mono text-xs uppercase tracking-[0.3em] mb-2 sm:mb-3">
             What is STEM?
           </p>
-          <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-8 sm:mb-12 tracking-tight">
+          <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-5 sm:mb-8 tracking-tight">
             4つの分野を横断して学ぶ
           </h3>
 

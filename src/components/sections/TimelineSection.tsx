@@ -100,7 +100,7 @@ function TimelineRow({
 
   const rawOpacity = useTransform(scrollYProgress, [start, end], [0, 1])
   const rawX = useTransform(scrollYProgress, [start, end], [100, 0])
-  const rawBlur = useTransform(scrollYProgress, [start, end], [10, 0])
+  const rawBlur = useTransform(scrollYProgress, [start, end], [4, 0])
 
   const opacity = useSpring(rawOpacity, SPRING)
   const x = useSpring(rawX, SPRING)
