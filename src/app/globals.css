@@ -11,12 +11,6 @@ html.dark {
 }
 
 @layer base {
-  @media (pointer: fine) {
-    * {
-      cursor: none !important;
-    }
-  }
-
   body {
     @apply antialiased;
   }
