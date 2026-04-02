@@ -51,16 +51,16 @@ const milestones = [
       '若年者ものづくり 業務用IT 銅賞',
       '技能五輪全国大会 ウェブデザイン 出場',
     ],
-    highlight: true,
     hash: 'b3e7f1a',
   },
   {
     year: '2025',
     items: [
-      'シンギュラリティBQ 出場',
+      'シンギュラリティBQ Xクエスト優勝 + PE-BANK賞 + Adobe賞',
       'WRO Japan 浜松予選 シニア3位',
       '若年者ものづくり競技大会 出場',
     ],
+    highlight: true,
     hash: 'f8c2a1d',
   },
 ]
