@@ -17,6 +17,16 @@ function useScrollReveal(progress: MotionValue<number>, start: number, end: numb
   return { opacity, y, filter }
 }
 
+const SPRING_SNAP = { stiffness: 500, damping: 35, mass: 0.2 }
+
+function useScrollRevealSnap(progress: MotionValue<number>, start: number, end: number) {
+  const rawOpacity = useTransform(progress, [start, end], [0, 1])
+  const rawY = useTransform(progress, [start, end], [20, 0])
+  const opacity = useSpring(rawOpacity, SPRING_SNAP)
+  const y = useSpring(rawY, SPRING_SNAP)
+  return { opacity, y }
+}
+
 const pillarsData = [
   { label: 'Skill Up', desc: '技術力の向上', sub: '各班の専門技術を深め、大会や自主制作を通じて実践的なスキルを身につける' },
   { label: 'Team First', desc: 'チームで作る', sub: 'GitHubで成果を共有・管理。コードレビューやドキュメント整備の文化を育てる' },
@@ -37,18 +47,10 @@ export default function MissionSection() {
 
   const visionStyle = useScrollReveal(scrollYProgress, 0.18, 0.36)
 
-  // Pillars use direct useTransform (no springs) for instant scroll-sync
-  const p0opacity = useTransform(scrollYProgress, [0.36, 0.48], [0, 1])
-  const p0y = useTransform(scrollYProgress, [0.36, 0.48], [24, 0])
-  const p1opacity = useTransform(scrollYProgress, [0.42, 0.54], [0, 1])
-  const p1y = useTransform(scrollYProgress, [0.42, 0.54], [24, 0])
-  const p2opacity = useTransform(scrollYProgress, [0.48, 0.60], [0, 1])
-  const p2y = useTransform(scrollYProgress, [0.48, 0.60], [24, 0])
-  const pillarStyles = [
-    { opacity: p0opacity, y: p0y },
-    { opacity: p1opacity, y: p1y },
-    { opacity: p2opacity, y: p2y },
-  ]
+  const pillar0 = useScrollRevealSnap(scrollYProgress, 0.34, 0.46)
+  const pillar1 = useScrollRevealSnap(scrollYProgress, 0.39, 0.51)
+  const pillar2 = useScrollRevealSnap(scrollYProgress, 0.44, 0.56)
+  const pillarStyles = [pillar0, pillar1, pillar2]
 
   return (
     <section ref={containerRef} id="mission" className="relative" style={{ height: '200vh' }}>
