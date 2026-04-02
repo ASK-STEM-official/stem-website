@@ -4,12 +4,12 @@ import { useRef } from 'react'
 import { motion, useScroll, useTransform, useSpring, type MotionValue } from 'framer-motion'
 import GlitchCode from '@/components/ui/GlitchCode'
 
-const SPRING = { stiffness: 80, damping: 28, mass: 0.8 }
+const SPRING = { stiffness: 200, damping: 28, mass: 0.5 }
 
 function useScrollReveal(progress: MotionValue<number>, start: number, end: number) {
   const rawOpacity = useTransform(progress, [start, end], [0, 1])
   const rawY = useTransform(progress, [start, end], [40, 0])
-  const rawBlur = useTransform(progress, [start, end], [3, 0])
+  const rawBlur = useTransform(progress, [start, end], [2, 0])
   const opacity = useSpring(rawOpacity, SPRING)
   const y = useSpring(rawY, SPRING)
   const blur = useSpring(rawBlur, SPRING)
@@ -30,20 +30,28 @@ export default function MissionSection() {
     offset: ['start start', 'end end'],
   })
 
-  const missionStyle = useScrollReveal(scrollYProgress, 0.00, 0.10)
+  const missionStyle = useScrollReveal(scrollYProgress, 0.00, 0.12)
 
-  const dividerRaw = useTransform(scrollYProgress, [0.10, 0.16], [0, 1])
+  const dividerRaw = useTransform(scrollYProgress, [0.12, 0.18], [0, 1])
   const dividerScale = useSpring(dividerRaw, SPRING)
 
-  const visionStyle = useScrollReveal(scrollYProgress, 0.16, 0.30)
+  const visionStyle = useScrollReveal(scrollYProgress, 0.18, 0.36)
 
-  const pillar0 = useScrollReveal(scrollYProgress, 0.33, 0.42)
-  const pillar1 = useScrollReveal(scrollYProgress, 0.37, 0.46)
-  const pillar2 = useScrollReveal(scrollYProgress, 0.41, 0.50)
-  const pillarStyles = [pillar0, pillar1, pillar2]
+  // Pillars use direct useTransform (no springs) for instant scroll-sync
+  const p0opacity = useTransform(scrollYProgress, [0.40, 0.55], [0, 1])
+  const p0y = useTransform(scrollYProgress, [0.40, 0.55], [24, 0])
+  const p1opacity = useTransform(scrollYProgress, [0.47, 0.62], [0, 1])
+  const p1y = useTransform(scrollYProgress, [0.47, 0.62], [24, 0])
+  const p2opacity = useTransform(scrollYProgress, [0.54, 0.69], [0, 1])
+  const p2y = useTransform(scrollYProgress, [0.54, 0.69], [24, 0])
+  const pillarStyles = [
+    { opacity: p0opacity, y: p0y },
+    { opacity: p1opacity, y: p1y },
+    { opacity: p2opacity, y: p2y },
+  ]
 
   return (
-    <section ref={containerRef} id="mission" className="relative" style={{ height: '250vh' }}>
+    <section ref={containerRef} id="mission" className="relative" style={{ height: '200vh' }}>
       <div className="sticky top-0 h-screen flex items-center overflow-hidden bg-brand-50 dark:bg-gray-950 text-gray-900 dark:text-white" style={{ height: '100dvh' }}>
         {/* Decorations */}
         <div className="absolute inset-0 bg-gradient-to-b from-brand-100/60 via-brand-50/30 to-transparent dark:from-brand-900/40 dark:via-brand-900/20 dark:to-transparent" />
