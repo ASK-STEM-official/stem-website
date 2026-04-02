@@ -8,7 +8,7 @@ import { projects } from '@/data/projects'
 
 export default function ProjectsSection() {
   return (
-    <SectionWrapper id="projects" background="gray">
+    <SectionWrapper id="projects" background="subtle">
       <FadeInUp>
         <div className="mb-16">
           <p className="text-brand-500 font-semibold text-sm uppercase tracking-[0.25em] mb-4">

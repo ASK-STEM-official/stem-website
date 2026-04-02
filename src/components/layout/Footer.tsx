@@ -2,8 +2,9 @@ import { ExternalLink } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer className="bg-brand-900 text-white py-12">
-      <div className="container mx-auto px-6 max-w-6xl">
+    <footer className="relative bg-gray-950 text-white py-12">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-brand-900/30" />
+      <div className="relative z-10 container mx-auto px-6 max-w-6xl">
         <hr className="border-white/10 mb-8" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>

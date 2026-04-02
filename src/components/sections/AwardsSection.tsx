@@ -60,16 +60,18 @@ export default function AwardsSection() {
   const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '20%'])
 
   return (
-    <section ref={ref} id="awards" className="relative bg-gray-950 text-white py-32 overflow-hidden">
-      {/* Parallax background grid */}
+    <section ref={ref} id="awards" className="relative text-white pt-32 pb-16 overflow-hidden">
+      {/* Top fade for seamless blending */}
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-gray-950 to-transparent z-[1]" />
+      {/* Parallax background grid with edge fade */}
       <motion.div
-        style={{ y: bgY }}
-        className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.07)_1px,transparent_1px)] bg-[size:80px_80px]"
+        className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.05)_1px,transparent_1px)] bg-[size:80px_80px]"
+        style={{ y: bgY, maskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)', WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)' }}
       />
 
-      {/* Glow spots */}
-      <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-indigo-600/15 rounded-full blur-[100px]" />
-      <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-violet-600/15 rounded-full blur-[100px]" />
+      {/* Glow spots - softer for seamless blending */}
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[120px]" />
+      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-violet-600/10 rounded-full blur-[120px]" />
 
       <div className="relative z-10 container mx-auto px-6 max-w-6xl">
         {/* Header */}

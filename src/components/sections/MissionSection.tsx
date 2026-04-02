@@ -4,15 +4,22 @@ import { motion } from 'framer-motion'
 
 export default function MissionSection() {
   return (
-    <section className="relative bg-brand-900 text-white py-32 overflow-hidden">
+    <section className="relative bg-gray-950 text-white py-32 overflow-hidden">
+      {/* Subtle indigo tint overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-brand-900/40 via-brand-900/20 to-transparent" />
+
+      {/* Top/bottom fades for seamless blending */}
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-gray-950 to-transparent z-[1]" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-gray-950 to-transparent z-[1]" />
+
       {/* animated gradient blobs */}
       <motion.div
-        className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-brand-600/30 blur-[120px]"
+        className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-brand-600/15 blur-[120px]"
         animate={{ x: [0, 60, 0], y: [0, -40, 0] }}
         transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
       />
       <motion.div
-        className="absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full bg-indigo-500/20 blur-[100px]"
+        className="absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full bg-indigo-500/10 blur-[100px]"
         animate={{ x: [0, -50, 0], y: [0, 50, 0] }}
         transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
       />

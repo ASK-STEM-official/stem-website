@@ -131,10 +131,14 @@ export default function TimelineSection() {
   const lineHeight = useTransform(scrollYProgress, [0, 0.85], ['0%', '100%'])
 
   return (
-    <section ref={ref} id="history" className="relative bg-gray-950 py-24 md:py-32 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(99,102,241,0.08),transparent_50%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.03)_1px,transparent_1px)] bg-[size:40px_40px]" />
+    <section ref={ref} id="history" className="relative pt-16 pb-24 md:pb-32 overflow-hidden">
+      {/* Bottom fade for seamless blending into footer */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-gray-950 to-transparent z-[1]" />
+      {/* Background grid with edge fade */}
+      <div
+        className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.05)_1px,transparent_1px)] bg-[size:80px_80px]"
+        style={{ maskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)', WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)' }}
+      />
       <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[120px]" />
 
       <div className="relative z-10 container mx-auto px-6 max-w-4xl">

@@ -16,7 +16,7 @@ const stats = [
 
 export default function AboutSection() {
   return (
-    <SectionWrapper id="about" background="white">
+    <SectionWrapper id="about">
       <div className="grid md:grid-cols-2 gap-16 items-center mb-20">
         <FadeInUp>
           <p className="text-brand-500 font-semibold text-sm uppercase tracking-wider mb-4">

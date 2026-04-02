@@ -7,28 +7,26 @@ interface SectionWrapperProps {
   children: React.ReactNode
   className?: string
   id?: string
-  background?: 'white' | 'gray'
+  background?: 'default' | 'subtle'
 }
 
 export default function SectionWrapper({
   children,
   className,
   id,
-  background = 'white',
+  background = 'default',
 }: SectionWrapperProps) {
-  const bgClasses = {
-    white: 'bg-gray-950',
-    gray: 'bg-gray-900',
-  }
-
   return (
-    <section id={id} className={cn(bgClasses[background], className)}>
+    <section id={id} className={cn('relative', className)}>
+      {background === 'subtle' && (
+        <div className="absolute inset-0 bg-white/[0.02]" />
+      )}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.7, ease: 'easeOut' }}
-        className="container mx-auto px-6 py-20 max-w-6xl"
+        className="relative container mx-auto px-6 py-20 max-w-6xl"
       >
         {children}
       </motion.div>
