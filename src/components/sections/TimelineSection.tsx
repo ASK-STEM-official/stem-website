@@ -4,16 +4,43 @@ import { useRef } from 'react'
 import { motion, useScroll, useTransform, useSpring, type MotionValue } from 'framer-motion'
 import ScrollDecodeCode from '@/components/ui/ScrollDecodeCode'
 
-// ── Timeline data ────────────────────────────────────
+// ── Timeline data (chronological: oldest → newest) ───
 const milestones = [
   {
-    year: '2025',
+    year: '2017',
+    items: ['STEM研究部 創部'],
+    hash: '0a1b2c3',
+  },
+  {
+    year: '2019',
+    items: ['若年者ものづくり ウェブデザイン 銅賞'],
+    hash: '5f8a4c1',
+  },
+  {
+    year: '2021',
     items: [
-      'シンギュラリティBQ 出場',
-      'WRO Japan 浜松予選 シニア3位',
-      '若年者ものづくり競技大会 出場',
+      '技能五輪全国大会 初出場',
+      '日本ゲーム大賞 U18部門 ファイナリスト',
     ],
-    hash: 'f8c2a1d',
+    hash: 'c7d2b6e',
+  },
+  {
+    year: '2022',
+    items: [
+      'ETロボコン 初参戦',
+      'LEGOロボット班 新設',
+    ],
+    hash: '91a5e3f',
+  },
+  {
+    year: '2023',
+    items: [
+      'シンギュラリティBQ Xクエスト3位 + PE-BANK賞',
+      '若年者ものづくり ウェブデザイン 銅賞',
+      '若年者ものづくり 業務用IT 敢闘賞',
+      '技能五輪全国大会 ウェブデザイン 出場',
+    ],
+    hash: '4d9c8b2',
   },
   {
     year: '2024',
@@ -28,40 +55,13 @@ const milestones = [
     hash: 'b3e7f1a',
   },
   {
-    year: '2023',
+    year: '2025',
     items: [
-      'シンギュラリティBQ Xクエスト3位 + PE-BANK賞',
-      '若年者ものづくり ウェブデザイン 銅賞',
-      '若年者ものづくり 業務用IT 敢闘賞',
-      '技能五輪全国大会 ウェブデザイン 出場',
+      'シンギュラリティBQ 出場',
+      'WRO Japan 浜松予選 シニア3位',
+      '若年者ものづくり競技大会 出場',
     ],
-    hash: '4d9c8b2',
-  },
-  {
-    year: '2022',
-    items: [
-      'ETロボコン 初参戦',
-      'LEGOロボット班 新設',
-    ],
-    hash: '91a5e3f',
-  },
-  {
-    year: '2021',
-    items: [
-      '技能五輪全国大会 初出場',
-      '日本ゲーム大賞 U18部門 ファイナリスト',
-    ],
-    hash: 'c7d2b6e',
-  },
-  {
-    year: '2019',
-    items: ['若年者ものづくり ウェブデザイン 銅賞'],
-    hash: '5f8a4c1',
-  },
-  {
-    year: '2017',
-    items: ['STEM研究部 創部'],
-    hash: '0a1b2c3',
+    hash: 'f8c2a1d',
   },
 ]
 
@@ -171,6 +171,10 @@ export default function TimelineSection() {
   // Decode code resolves over roughly the same range as timeline entries
   const decodeProgress = useTransform(scrollYProgress, [0.02, 0.88], [0, 1])
 
+  // Connecting line grows as entries appear
+  const lineRaw = useTransform(scrollYProgress, [0.04, 0.88], [0, 1])
+  const lineScale = useSpring(lineRaw, SPRING)
+
   return (
     <section id="history" className="relative">
       {/* Background — clip decorative elements here, NOT on section */}
@@ -205,7 +209,14 @@ export default function TimelineSection() {
               沿革
             </h2>
 
-            <div className="space-y-2 sm:space-y-3 md:space-y-4">
+            <div className="relative space-y-2 sm:space-y-3 md:space-y-4">
+              {/* Static guide line */}
+              <div className="absolute left-[3.875rem] sm:left-[6rem] md:left-[7.75rem] top-1 bottom-1 w-px bg-gray-200/50 dark:bg-white/[0.06]" />
+              {/* Animated progress line */}
+              <motion.div
+                className="absolute left-[3.875rem] sm:left-[6rem] md:left-[7.75rem] top-1 bottom-1 w-px bg-gradient-to-b from-brand-400 via-brand-500 to-brand-600 origin-top"
+                style={{ scaleY: lineScale }}
+              />
               {milestones.map((m, i) => (
                 <TimelineRow
                   key={m.year}
