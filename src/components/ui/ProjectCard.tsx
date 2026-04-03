@@ -18,7 +18,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       variants={itemVariants}
       whileHover={{ scale: 1.03, y: -6 }}
       transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-      className="group bg-white dark:bg-white/5 rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 hover:border-brand-500/30 hover:shadow-2xl transition-all duration-300 cursor-default"
+      className="group bg-white dark:bg-white/[0.08] rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 hover:border-brand-500/30 hover:shadow-2xl transition-all duration-300 cursor-default"
     >
       <div className={`h-44 bg-gradient-to-br ${gradient} relative flex items-center justify-center overflow-hidden`}>
         {/* Animated shimmer */}

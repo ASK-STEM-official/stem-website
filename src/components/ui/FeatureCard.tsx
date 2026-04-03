@@ -22,7 +22,7 @@ export default function FeatureCard({
     <motion.div
       variants={itemVariants}
       className={cn(
-        'bg-gray-50 dark:bg-white/5 rounded-2xl p-8 border border-gray-200 dark:border-white/10 hover:border-brand-500/30 hover:-translate-y-1 transition-all duration-300',
+        'bg-gray-50 dark:bg-white/[0.08] rounded-2xl p-8 border border-gray-200 dark:border-white/10 hover:border-brand-500/30 hover:-translate-y-1 transition-all duration-300',
         className
       )}
     >

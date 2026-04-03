@@ -37,15 +37,12 @@ export default function Navigation() {
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         scrolled
           ? 'bg-white/95 dark:bg-gray-950/95 backdrop-blur-md shadow-sm border-b border-gray-200 dark:border-white/10'
-          : 'bg-gradient-to-b from-black/30 to-transparent'
+          : ''
       )}
     >
       <div className="container mx-auto px-6 h-16 flex items-center justify-between max-w-6xl">
         <span
-          className={cn(
-            'font-bold text-lg tracking-tight transition-colors',
-            scrolled ? 'text-gray-900 dark:text-white' : 'text-white'
-          )}
+          className="font-bold text-lg tracking-tight text-gray-900 dark:text-white transition-colors"
         >
           STEM研究部
         </span>
@@ -56,12 +53,7 @@ export default function Navigation() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className={cn(
-                    'text-[13px] font-medium transition-colors',
-                    scrolled
-                      ? 'text-gray-500 dark:text-white/70 hover:text-gray-900 dark:hover:text-white'
-                      : 'text-white/80 hover:text-white'
-                  )}
+                  className="text-[13px] font-medium text-gray-500 dark:text-white/70 hover:text-gray-900 dark:hover:text-white transition-colors"
                 >
                   {link.label}
                 </a>
@@ -75,8 +67,7 @@ export default function Navigation() {
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className={cn(
-              'md:hidden relative w-6 h-5 flex flex-col justify-between transition-colors',
-              scrolled ? 'text-gray-900 dark:text-white' : 'text-white'
+              'md:hidden relative w-6 h-5 flex flex-col justify-between transition-colors text-gray-900 dark:text-white'
             )}
             aria-label="メニュー"
           >

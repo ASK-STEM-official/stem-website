@@ -141,10 +141,13 @@ export default function useCanvasCursor(canvasId: string) {
 
     function render() {
       if (!running) return
+      const isDark = document.documentElement.classList.contains('dark')
       ctx!.globalCompositeOperation = 'source-over'
       ctx!.clearRect(0, 0, canvas!.width, canvas!.height)
-      ctx!.globalCompositeOperation = 'lighter'
-      ctx!.strokeStyle = `hsla(${Math.round(hueOsc.update())},50%,50%,0.25)`
+      ctx!.globalCompositeOperation = isDark ? 'lighter' : 'source-over'
+      ctx!.strokeStyle = isDark
+        ? `hsla(${Math.round(hueOsc.update())},50%,50%,0.25)`
+        : `hsla(${Math.round(hueOsc.update())},60%,45%,0.35)`
       ctx!.lineWidth = 1
 
       for (const line of lines) {

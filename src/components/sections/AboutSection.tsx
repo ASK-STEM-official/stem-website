@@ -40,7 +40,7 @@ export default function AboutSection() {
                 key={stat.label}
                 className="bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl p-4 sm:p-6 text-center"
               >
-                <div className="text-2xl sm:text-3xl font-bold text-brand-600">
+                <div className="text-2xl sm:text-3xl font-bold text-brand-600 dark:text-brand-400">
                   <CountUp end={stat.end} suffix={stat.suffix} duration={2} />
                 </div>
                 <div className="text-xs sm:text-sm text-gray-500 dark:text-white/50 mt-1">{stat.label}</div>

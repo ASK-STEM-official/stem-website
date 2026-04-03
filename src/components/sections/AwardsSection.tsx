@@ -84,7 +84,7 @@ export default function AwardsSection() {
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ y: -4 }}
-              className="group rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 p-8 cursor-default hover:border-brand-300 dark:hover:border-brand-500/40 hover:shadow-lg dark:hover:shadow-brand-500/5 transition-all duration-300"
+              className="group rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/[0.08] p-8 cursor-default hover:border-brand-300 dark:hover:border-brand-500/40 hover:shadow-lg dark:hover:shadow-brand-500/5 transition-all duration-300"
             >
               <div className="flex items-center gap-3 mb-5">
                 <span className="text-xs font-mono font-bold text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-500/10 px-2.5 py-1 rounded-md">

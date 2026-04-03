@@ -246,7 +246,7 @@ export default function TimelineSection() {
 
       {/* ── PART 1: Sticky scroll timeline ── */}
       <div ref={timelineRef} style={{ height: '350vh' }}>
-        <div className="sticky top-0 h-screen flex items-center overflow-hidden" style={{ height: '100dvh' }}>
+        <div className="sticky top-0 h-screen flex items-center overflow-hidden bg-white dark:bg-gray-950" style={{ height: '100dvh' }}>
           <div className="absolute inset-0 hidden sm:flex items-center justify-center overflow-hidden p-6 sm:p-10">
             <ScrollDecodeCode
               scrollProgress={decodeProgress}
@@ -335,7 +335,7 @@ export default function TimelineSection() {
                       viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: ci * 0.06 + ii * 0.04 }}
                       whileHover={{ y: -4, scale: 1.05 }}
-                      className="group relative flex flex-col items-center gap-2 sm:gap-2.5 p-3 sm:p-4 rounded-xl border border-gray-200/60 dark:border-white/[0.06] bg-white/70 dark:bg-white/[0.02] backdrop-blur-sm cursor-default transition-shadow duration-300 hover:shadow-lg hover:shadow-black/5 dark:hover:shadow-black/30 hover:border-gray-300 dark:hover:border-white/10"
+                      className="group relative flex flex-col items-center gap-2 sm:gap-2.5 p-3 sm:p-4 rounded-xl border border-gray-200/60 dark:border-white/[0.08] bg-white/90 dark:bg-white/[0.05] backdrop-blur-sm cursor-default transition-shadow duration-300 hover:shadow-lg hover:shadow-black/5 dark:hover:shadow-black/30 hover:border-gray-300 dark:hover:border-white/10"
                     >
                       {/* Hover glow */}
                       <div
