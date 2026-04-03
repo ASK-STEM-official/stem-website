@@ -65,19 +65,74 @@ const milestones = [
   },
 ]
 
-// ── Tech stack ───────────────────────────────────────
-const CATEGORY_STYLE: Record<string, { heading: string; pill: string }> = {
-  lang:     { heading: 'text-cyan-600 dark:text-cyan-400',    pill: 'bg-cyan-50 dark:bg-cyan-500/10 text-cyan-600 dark:text-cyan-300 border-cyan-200 dark:border-cyan-500/20' },
-  platform: { heading: 'text-purple-600 dark:text-purple-400',  pill: 'bg-purple-50 dark:bg-purple-500/10 text-purple-600 dark:text-purple-300 border-purple-200 dark:border-purple-500/20' },
-  hardware: { heading: 'text-orange-600 dark:text-orange-400',  pill: 'bg-orange-50 dark:bg-orange-500/10 text-orange-600 dark:text-orange-300 border-orange-200 dark:border-orange-500/20' },
-  infra:    { heading: 'text-emerald-600 dark:text-emerald-400', pill: 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border-emerald-200 dark:border-emerald-500/20' },
+// ── Tech stack with icons ─────────────────────────────
+import type { IconType } from 'react-icons'
+import {
+  SiJavascript, SiTypescript, SiPython, SiC,
+  SiHtml5, SiCss, SiUnity, SiDotnet, SiBlender, SiMysql,
+  SiArduino, SiRaspberrypi, SiMeta, SiLinux, SiGithub, SiGit,
+  SiReact, SiFirebase,
+} from 'react-icons/si'
+import { Database, Network, Box } from 'lucide-react'
+
+type TechItem = {
+  name: string
+  icon: IconType | React.FC<{ size?: number; className?: string }>
+  color: string
+  darkColor?: string
 }
 
-const techStack = [
-  { name: 'Languages',      type: 'lang',     items: ['C#', 'JavaScript', 'TypeScript', 'Python', 'C', 'HTML / CSS', 'SQL'] },
-  { name: 'Platforms',       type: 'platform', items: ['Unity', '.NET', 'Blender', 'MySQL'] },
-  { name: 'Hardware',        type: 'hardware', items: ['Arduino', 'Raspberry Pi', '3D Printer', 'Meta Quest'] },
-  { name: 'Infrastructure',  type: 'infra',    items: ['Linux', 'Network', 'GitHub'] },
+type TechCategory = {
+  name: string
+  label: string
+  accent: string
+  items: TechItem[]
+}
+
+const techCategories: TechCategory[] = [
+  {
+    name: 'Languages',
+    label: '言語',
+    accent: 'from-cyan-500 to-blue-500',
+    items: [
+      { name: 'C#', icon: SiDotnet, color: '#68217A' },
+      { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E', darkColor: '#F7DF1E' },
+      { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
+      { name: 'Python', icon: SiPython, color: '#3776AB' },
+      { name: 'C', icon: SiC, color: '#A8B9CC' },
+      { name: 'HTML5', icon: SiHtml5, color: '#E34F26' },
+      { name: 'CSS', icon: SiCss, color: '#1572B6' },
+      { name: 'SQL', icon: Database as unknown as IconType, color: '#336791' },
+    ],
+  },
+  {
+    name: 'Platforms & Tools',
+    label: 'プラットフォーム',
+    accent: 'from-purple-500 to-pink-500',
+    items: [
+      { name: 'Unity', icon: SiUnity, color: '#444444', darkColor: '#ffffff' },
+      { name: '.NET', icon: SiDotnet, color: '#512BD4' },
+      { name: 'React', icon: SiReact, color: '#61DAFB' },
+      { name: 'Blender', icon: SiBlender, color: '#E87D0D' },
+      { name: 'MySQL', icon: SiMysql, color: '#4479A1' },
+      { name: 'Firebase', icon: SiFirebase, color: '#DD2C00' },
+      { name: 'Git', icon: SiGit, color: '#F05032' },
+      { name: 'GitHub', icon: SiGithub, color: '#444444', darkColor: '#ffffff' },
+    ],
+  },
+  {
+    name: 'Hardware & Infra',
+    label: 'ハードウェア / インフラ',
+    accent: 'from-orange-500 to-red-500',
+    items: [
+      { name: 'Arduino', icon: SiArduino, color: '#00878F' },
+      { name: 'Raspberry Pi', icon: SiRaspberrypi, color: '#A22846' },
+      { name: 'Meta Quest', icon: SiMeta, color: '#0082FB' },
+      { name: '3D Printer', icon: Box as unknown as IconType, color: '#FF6B35' },
+      { name: 'Linux', icon: SiLinux, color: '#333333', darkColor: '#FCC624' },
+      { name: 'Network', icon: Network as unknown as IconType, color: '#06B6D4' },
+    ],
+  },
 ]
 
 const SPRING = { stiffness: 200, damping: 28, mass: 0.5 }
@@ -231,48 +286,81 @@ export default function TimelineSection() {
       </div>
 
       {/* ── PART 2: Tech Stack (normal scroll) ── */}
-      <div className="relative z-10 container mx-auto px-6 max-w-4xl pt-16 sm:pt-20 pb-28 md:pb-36">
+      <div className="relative z-10 container mx-auto px-5 sm:px-6 max-w-5xl pt-16 sm:pt-20 pb-28 md:pb-36">
         <motion.div
-          initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
-          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
+          className="mb-10 sm:mb-14"
         >
           <p className="text-brand-600 dark:text-brand-400 text-xs font-mono font-bold uppercase tracking-[0.3em] mb-4">
             Tech Stack
           </p>
-          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-12 tracking-tight">
+          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white tracking-tight">
             使用技術
           </h3>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-          {techStack.map((cat, i) => {
-            const c = CATEGORY_STYLE[cat.type]
-            return (
-              <motion.div
-                key={cat.name}
-                initial={{ opacity: 0, y: 20, filter: 'blur(6px)' }}
-                whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-              >
-                <p className={`text-xs font-bold uppercase tracking-widest mb-3 ${c.heading}`}>
+        <div className="space-y-10 sm:space-y-14">
+          {techCategories.map((cat, ci) => (
+            <motion.div
+              key={cat.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.5, delay: ci * 0.08 }}
+            >
+              {/* Category header */}
+              <div className="flex items-center gap-3 mb-5">
+                <div className={`h-px flex-1 max-w-[3rem] bg-gradient-to-r ${cat.accent} opacity-60`} />
+                <p className="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-white/50">
                   {cat.name}
+                  <span className="hidden sm:inline text-gray-300 dark:text-white/20 mx-2">/</span>
+                  <span className="hidden sm:inline text-gray-400 dark:text-white/30 font-normal normal-case tracking-normal">
+                    {cat.label}
+                  </span>
                 </p>
-                <div className="flex flex-wrap gap-2">
-                  {cat.items.map((item) => (
-                    <span
-                      key={item}
-                      className={`text-xs px-3 py-1.5 rounded-full border ${c.pill}`}
+              </div>
+
+              {/* Tech cards grid */}
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-8 gap-2 sm:gap-3">
+                {cat.items.map((item, ii) => {
+                  const Icon = item.icon
+                  return (
+                    <motion.div
+                      key={item.name}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: ci * 0.06 + ii * 0.04 }}
+                      whileHover={{ y: -4, scale: 1.05 }}
+                      className="group relative flex flex-col items-center gap-2 sm:gap-2.5 p-3 sm:p-4 rounded-xl border border-gray-200/60 dark:border-white/[0.06] bg-white/70 dark:bg-white/[0.02] backdrop-blur-sm cursor-default transition-shadow duration-300 hover:shadow-lg hover:shadow-black/5 dark:hover:shadow-black/30 hover:border-gray-300 dark:hover:border-white/10"
                     >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            )
-          })}
+                      {/* Hover glow */}
+                      <div
+                        className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        style={{
+                          background: `radial-gradient(circle at 50% 40%, ${item.darkColor || item.color}08, transparent 70%)`,
+                        }}
+                      />
+                      {item.darkColor ? (
+                        <>
+                          <Icon size={26} className="relative z-10 shrink-0 dark:hidden" style={{ color: item.color }} />
+                          <Icon size={26} className="relative z-10 shrink-0 hidden dark:block" style={{ color: item.darkColor }} />
+                        </>
+                      ) : (
+                        <Icon size={26} className="relative z-10 shrink-0" style={{ color: item.color }} />
+                      )}
+                      <span className="relative z-10 text-[10px] sm:text-xs font-medium text-gray-600 dark:text-white/60 text-center leading-tight whitespace-nowrap">
+                        {item.name}
+                      </span>
+                    </motion.div>
+                  )
+                })}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
 
